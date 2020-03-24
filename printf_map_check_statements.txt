@@ -1,0 +1,35 @@
+	// texture
+	printf("SO: %s\n", map.so_texture);
+	printf("NO: %s\n", map.no_texture);
+	printf("WE: %s\n", map.we_texture);
+	printf("EA: %s\n", map.ea_texture);
+	printf("SPRITE: %s\n", map.sprite_texture);
+	// resolution
+	printf("RH: %i\n", map.res_h);
+	printf("RW: %i\n", map.res_w);
+	// color
+	printf("F_C_R: %i\n", map.f_color_red);
+	printf("F_C_G: %i\n", map.f_color_green);
+	printf("F_C_B: %i\n", map.f_color_blue);
+	printf("R_C_R: %i\n", map.c_color_red);
+	printf("R_C_G: %i\n", map.c_color_green);
+	printf("R_C_B: %i\n", map.c_color_blue);
+	// Hex color floor and ceiling
+	printf("F_HEX: %lx\n", map.f_hex);
+	printf("C_HEX: %lx\n", map.c_hex);
+
+	// Map in one str
+	printf("%s\n", map.map_str);
+	// color hex
+	printf("F_HEX: %lx\n", map.f_hex);
+
+	// ROW & COLUMN COUNT
+	printf("COLUMN: %i\n", map.column_count);
+	printf("ROW: %i\n", map.row_count);
+
+	// 2D ARRAY PRINT
+	while (i < map.row_count)
+	{
+		printf("%s\n", map.map_2d[i]);
+		i++;
+	}
