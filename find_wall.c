@@ -112,5 +112,5 @@ void	find_wall(t_vars *t, t_ray_data *r)
 		}
 	}
 	find_eucl_and_perp_dist(t, r);
-	draw_sprites(t, r);
+	// draw_sprites(t, r);
 }

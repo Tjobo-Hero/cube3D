@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:58:03 by tvan-cit       #+#    #+#                */
-/*   Updated: 2020/03/23 16:24:58 by tim           ########   odam.nl         */
+/*   Updated: 2020/03/26 13:58:32 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct 		s_sprite
 	int				img_height;
 	float 			pos_wall[10];
 	float 			eucl_dist[10];
+	float 			step;
 	int				count;
 	
 }					t_sprite;
