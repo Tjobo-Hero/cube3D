@@ -236,7 +236,7 @@ void    			initialize_textures(t_vars *t);
 //Sprites
 void    			initialize_sprites(t_vars *t);
 void    			get_sprite_pos(t_vars *t, t_ray_data *r);
-void    			draw_sprites(t_vars *t, t_ray_data *r);
+void    			draw_sprites(t_vars *t);
 
 // Floor and Ceiling
 void    			draw_floor_and_ceiling(t_vars *t, int y_count, int x_count);

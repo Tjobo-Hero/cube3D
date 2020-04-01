@@ -17,7 +17,7 @@ SRC = 	main.c get_next_line.c get_next_line_utils.c get_map_info.c \
 		check_2d_array.c maze.c all_map_functions.c utils.c \
 		find_wall.c draw_world.c move_player.c \
 		textures.c initialize_textures.c draw_floor_and_ceiling.c \
-		initialize_sprite.c sprites.c \
+		initialize_sprite.c sprites.c draw_sprites.c\
 
 LIB	  =	$(subst .c,.o, $(SRC))
 

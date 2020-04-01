@@ -127,6 +127,7 @@ void	shoot_rays(t_vars *t, int color)
 	t->x_count = 0;
 	while (start <= 1)
 	{
+		// printf("----------------------------\n");
 		ray = t->mid_ray - atan(start / mid_line);
 		if (ray > (2 * M_PI))
 			ray -= (2 * M_PI);
