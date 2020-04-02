@@ -21,12 +21,12 @@ void	move_player(t_vars *t, float move)
 	temp_x = t->x;
 	temp_y = t->y;
 	t->x += sin(t->mid_ray) * move;
-	if (t->map->map_2d[(int)t->y][(int)t->x] == '1' ||
-	t->map->map_2d[(int)t->y][(int)t->x] == '2')
+	if (t->map->map_2d[(int)t->y][(int)t->x] == '1')
+	 // t->map->map_2d[(int)t->y][(int)t->x] == '2')
 		t->x = temp_x;
 	t->y += cos(t->mid_ray) * move;
-	if (t->map->map_2d[(int)t->y][(int)t->x] == '1' ||
-	t->map->map_2d[(int)t->y][(int)t->x] == '2')
+	if (t->map->map_2d[(int)t->y][(int)t->x] == '1')
+	// t->map->map_2d[(int)t->y][(int)t->x] == '2')
 		t->y = temp_y;
 	my_mlx_pixel_put(t, (t->x * t->tile_width),
 	(t->y * t->tile_height), 0x000000);
@@ -45,10 +45,10 @@ void	move_crab(t_vars *t, float move)
 	x_dir = sin(t->mid_ray + M_PI / 2);
 	y_dir = cos(t->mid_ray + M_PI / 2);
 	t->x += x_dir * move;
-	if (t->map->map_2d[(int)t->y][(int)t->x] == '1' || t->map->map_2d[(int)t->y][(int)t->x] == '2')
+	if (t->map->map_2d[(int)t->y][(int)t->x] == '1') // || t->map->map_2d[(int)t->y][(int)t->x] == '2')
 		t->x = temp_x;
 	t->y += y_dir * move;
-	if (t->map->map_2d[(int)t->y][(int)t->x] == '1' || t->map->map_2d[(int)t->y][(int)t->x] == '2')
+	if (t->map->map_2d[(int)t->y][(int)t->x] == '1') // || t->map->map_2d[(int)t->y][(int)t->x] == '2')
 		t->y = temp_y;
 	my_mlx_pixel_put(t, (t->x * t->tile_width), (t->y * t->tile_height), 0x000000);
 }

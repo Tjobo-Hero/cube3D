@@ -21,7 +21,7 @@ SRC = 	main.c get_next_line.c get_next_line_utils.c get_map_info.c \
 
 LIB	  =	$(subst .c,.o, $(SRC))
 
-CC = gcc -Wall -Werror -Wextra -I minilibx -L minilibx -lmlx -framework OpenGL -framework AppKit -o
+CC = gcc -Ofast -march=native -Wall -Werror -Wextra -I minilibx -L minilibx -lmlx -framework OpenGL -framework AppKit -o
 
 all: $(NAME)
 

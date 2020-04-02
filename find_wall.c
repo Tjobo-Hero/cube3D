@@ -114,6 +114,7 @@ void	find_wall(t_vars *t, t_ray_data *r)
 	find_eucl_and_perp_dist(t, r);
 	while (t->sp->count >= 0)
 	{
+		// if (t->sp->pos_wall[t->sp->count - 1] != -1) //toegevoegd waarom geen idee
 		draw_sprites(t);
 		t->sp->count--;
 	}

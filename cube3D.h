@@ -135,6 +135,8 @@ typedef struct 		s_sprite
 	float 			eucl_dist[10];
 	float 			step;
 	int				count;
+	float			sp_angle_l;
+	float			sp_angle_r;
 	
 }					t_sprite;
 
