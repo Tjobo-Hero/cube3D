@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/10 13:33:10 by tvan-cit       #+#    #+#                */
-/*   Updated: 2020/03/23 16:29:53 by tim           ########   odam.nl         */
+/*   Created: 2020/03/10 13:33:10 by tvan-cit      #+#    #+#                 */
+/*   Updated: 2020/04/03 11:41:09 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void	find_dist(t_vars *t, t_ray_data *r)
 		r->dist_x = 1 - (t->x - (int)t->x);
 		r->dist_y = 1 - (t->y - (int)t->y);
 	}
-	if (r->ray_dir < 1 * M_PI && r->ray_dir >= 0.5 * M_PI)
+	else if (r->ray_dir < 1 * M_PI && r->ray_dir >= 0.5 * M_PI)
 	{
 		r->dist_x = 1 - (t->x - (int)t->x);
 		r->dist_y = t->y - (int)t->y;
 	}
-	if (r->ray_dir >= 1 * M_PI && r->ray_dir < 1.5 * M_PI)
+	else if (r->ray_dir >= 1 * M_PI && r->ray_dir < 1.5 * M_PI)
 	{
 		r->dist_x = t->x - (int)t->x;
 		r->dist_y = t->y - (int)t->y;
 	}
-	if (r->ray_dir >= 1.5 * M_PI && r->ray_dir <= 2 * M_PI)
+	else if (r->ray_dir >= 1.5 * M_PI && r->ray_dir <= 2 * M_PI)
 	{
 		r->dist_x = t->x - (int)t->x;
 		r->dist_y = 1 - (t->y - (int)t->y);
@@ -69,17 +69,41 @@ void	find_eucl_and_perp_dist(t_vars *t, t_ray_data *r)
 	r->perp_dist = (r->eucl_dist * cos(t->mid_ray - r->ray_dir));
 	if (r->side == 0)
 	{
+		r->pos_wall = fabs(cos(r->ray_dir) * r->eucl_dist) - r->dist;
+    	r->pos_wall = r->pos_wall - (int)r->pos_wall;
+    	if (r->pos_wall < 0)
+        	r->pos_wall += 1.0;
 		if (r->ray_dir < (1 * M_PI))
+		{
+			if (r->ray_dir > (0.5 * M_PI))
+        		r->pos_wall = 1 - r->pos_wall;
 			texture_east(t, r);
-		if (r->ray_dir >= (1 * M_PI)) // = teken terug gezet
+		}
+		else if (r->ray_dir >= (1 * M_PI)) // = teken terug gezet
+		{
+			if (r->ray_dir > (1.5 * M_PI))
+        		r->pos_wall = 1 - r->pos_wall;
 			texture_west(t, r);
+		}
 	}
 	else
 	{
+		r->pos_wall = fabs(sin(r->ray_dir) * r->eucl_dist) - r->dist;
+    	r->pos_wall = r->pos_wall - (int)r->pos_wall;
+    	if (r->pos_wall < 0)
+        	r->pos_wall += 1.0;
 		if (r->ray_dir < (0.5 * M_PI) || r->ray_dir >= (1.5 * M_PI))
+		{
+			if (r->ray_dir < (0.5 * M_PI))
+        		r->pos_wall = 1 - r->pos_wall;
 			texture_south(t, r);
-		if (r->ray_dir >= (0.5 * M_PI) && r->ray_dir < (1.5 * M_PI))
+		}
+		else if (r->ray_dir >= (0.5 * M_PI) && r->ray_dir < (1.5 * M_PI))
+		{
+			if (r->ray_dir < (1 * M_PI))
+        		r->pos_wall = 1 - r->pos_wall;
 			texture_north(t, r);
+		}
 	}
 }
 

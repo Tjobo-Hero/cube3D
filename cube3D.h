@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/22 15:58:03 by tvan-cit       #+#    #+#                */
-/*   Updated: 2020/03/26 13:58:32 by tim           ########   odam.nl         */
+/*   Created: 2020/01/22 15:58:03 by tvan-cit      #+#    #+#                 */
+/*   Updated: 2020/04/03 14:09:24 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,9 @@ typedef	struct		s_vars
 	t_texture_we 	*we;
 	t_texture_ea	*ea;
 	t_sprite		*sp;
+	void			*img1;
 	void			*img2;
+	char			*addr1;
 	char			*addr2;
 	int				bits_per_pixel2;
 	int				line_length2;
@@ -175,6 +177,13 @@ typedef	struct		s_vars
 	int				res3d_h;
 	int 			res3d_w;
 	int				x_count;
+	int				screen_x;
+	int				screen_y;
+	float			mid_line;
+	int				addr_count;
+	float			move;
+	float			turn;
+	float			crab;
 }					t_vars;
 
 int		main(int argc, char **argv);
@@ -216,7 +225,7 @@ int					check_2d_array(t_list *map);
 void				find_wall(t_vars *t, t_ray_data *r);
 
 // Drawing Labyrint
-void				maze(t_list *map);
+void				maze(t_list *map, t_vars *t);
 int					my_mlx_pixel_put(t_vars *t, int x, int y, int color);
 
 //Drawing 3D
@@ -227,18 +236,20 @@ void				my_mlx_pixel_put3d(t_vars *t, int x, int y, int color);
 void 				set_player_direction(t_vars *t, char c);
 void				screen_cleaner(t_vars *t);
 int					exit_program(t_vars *t);
+void				set_tile_width_and_height(t_vars *t);
 
 //Textures
 void    			texture_north(t_vars *t, t_ray_data *r);
 void    			texture_south(t_vars *t, t_ray_data *r);
 void    			texture_east(t_vars *t, t_ray_data *r);
 void    			texture_west(t_vars *t, t_ray_data *r);
-void    			initialize_textures(t_vars *t);
+int	   				initialize_textures(t_vars *t);
 
 //Sprites
-void    			initialize_sprites(t_vars *t);
+int   				initialize_sprites(t_vars *t);
 void    			get_sprite_pos(t_vars *t, t_ray_data *r);
 void    			draw_sprites(t_vars *t);
+int					initialize_data(t_vars *t, t_list *map);
 
 // Floor and Ceiling
 void    			draw_floor_and_ceiling(t_vars *t, int y_count, int x_count);

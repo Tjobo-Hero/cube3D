@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/18 11:58:57 by tim            #+#    #+#                */
-/*   Updated: 2020/03/21 13:08:27 by tim           ########   odam.nl         */
+/*   Created: 2020/03/18 11:58:57 by tim           #+#    #+#                 */
+/*   Updated: 2020/04/03 11:48:44 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,10 @@ void    texture_north(t_vars *t, t_ray_data *r)
 	int     y_count;
     float   text_step;
     int     height_text;                        // new
-    
-    r->pos_wall = fabs(sin(r->ray_dir) * r->eucl_dist);
-    r->pos_wall = r->pos_wall - r->dist;
-    r->pos_wall = r->pos_wall - (int)r->pos_wall;
-    if (r->pos_wall < 0)
-        r->pos_wall += 1.0;
-    if (r->ray_dir < (1 * M_PI))
-        r->pos_wall = 1 - r->pos_wall;
+    int 	test;
+	int		test1;
+	int 	test2;	
+	
     pix_height = 1.0 / r->perp_dist;
     height_text = (pix_height * t->res3d_h) / 2.0; // new
 	if (pix_height > 1.0)
@@ -34,22 +30,22 @@ void    texture_north(t_vars *t, t_ray_data *r)
 	pix_height = (pix_height * t->res3d_h) / 2.0;
 	y_count = 0;
     text_step = ((t->no->img_height_no - 1.0) / 2.0) / height_text; // new
+	test = (t->no->img_height_no / 2);
+	test1 = (int)(r->pos_wall * t->no->img_width_no) * (t->no->bits_per_pixel_no / 8);
+	test2 = (t->res3d_h / 2);
 	while (y_count <= (int)pix_height) // Kan mis gaan door de + 1;
 	{
-        color = t->no->addr_no + (((t->no->img_height_no / 2) + (int)(text_step * y_count)) * t->no->line_length_no + (int)(r->pos_wall * t->no->img_width_no) *
-        (t->no->bits_per_pixel_no / 8));
+        color = t->no->addr_no + ((test + (int)(text_step * y_count)) * t->no->line_length_no + test1);
         //  printf("x_count_no: %i\n", t->x_count);
-        my_mlx_pixel_put3d(t, t->x_count, (t->res3d_h / 2) + y_count, *(unsigned int*)color);
-        color = t->no->addr_no + (((t->no->img_height_no / 2) - (int)(text_step * y_count)) * t->no->line_length_no + (int)(r->pos_wall * t->no->img_width_no) *
-        (t->no->bits_per_pixel_no / 8));
-		my_mlx_pixel_put3d(t, t->x_count, (t->res3d_h / 2) - y_count, *(unsigned int*)color);
+        my_mlx_pixel_put3d(t, t->x_count, test2 + y_count, *(unsigned int*)color);
+        color = t->no->addr_no + ((test - (int)(text_step * y_count)) * t->no->line_length_no + test1);
+		my_mlx_pixel_put3d(t, t->x_count, test2 - y_count, *(unsigned int*)color);
         y_count++;
     }
     if (t->res3d_h % 2 == 0)
     {
-        color = t->no->addr_no + (((t->no->img_height_no / 2) - (int)(text_step * y_count)) * t->no->line_length_no + (int)(r->pos_wall * t->no->img_width_no) *
-        (t->no->bits_per_pixel_no / 8));
-		my_mlx_pixel_put3d(t, t->x_count, (t->res3d_h / 2) - y_count, *(unsigned int*)color);
+        color = t->no->addr_no + ((test - (int)(text_step * y_count)) * t->no->line_length_no + test1);
+		my_mlx_pixel_put3d(t, t->x_count, test2 - y_count, *(unsigned int*)color);
     }
     draw_floor_and_ceiling(t, y_count, t->x_count);
 }
@@ -62,13 +58,6 @@ void    texture_south(t_vars *t, t_ray_data *r)
     float   text_step;
     int     height_text;
     
-    r->pos_wall = fabs(sin(r->ray_dir) * r->eucl_dist);
-    r->pos_wall = r->pos_wall - r->dist;
-    r->pos_wall = r->pos_wall - (int)r->pos_wall;
-    if (r->pos_wall < 0)
-        r->pos_wall += 1.0;
-    if (r->ray_dir < (0.5 * M_PI))
-        r->pos_wall = 1 - r->pos_wall;
     pix_height = 1.0 / r->perp_dist;
     height_text = (pix_height * t->res3d_h) / 2.0;
 	if (pix_height > 1.0)
@@ -103,14 +92,8 @@ void    texture_east(t_vars *t, t_ray_data *r)
 	int     y_count;
     float   text_step;
     int     height_text;
-    
-    r->pos_wall = fabs(cos(r->ray_dir) * r->eucl_dist);
-    r->pos_wall = r->pos_wall - r->dist;
-    r->pos_wall = r->pos_wall - (int)r->pos_wall;
-    if (r->pos_wall < 0)
-        r->pos_wall += 1.0;
-    if (r->ray_dir > (0.5 * M_PI))
-        r->pos_wall = 1 - r->pos_wall;
+
+
     pix_height = 1.0 / r->perp_dist;
     height_text = (pix_height * t->res3d_h) / 2.0;
 	if (pix_height > 1.0)
@@ -146,13 +129,6 @@ void    texture_west(t_vars *t, t_ray_data *r)
     float   text_step;
     int     height_text;
     
-    r->pos_wall = fabs(cos(r->ray_dir) * r->eucl_dist);
-    r->pos_wall = r->pos_wall - r->dist;
-    r->pos_wall = r->pos_wall - (int)r->pos_wall;
-    if (r->pos_wall < 0)
-        r->pos_wall += 1.0;
-    if (r->ray_dir > (1.5 * M_PI))
-        r->pos_wall = 1 - r->pos_wall;
     pix_height = 1.0 / r->perp_dist;
     height_text = (pix_height * t->res3d_h) / 2.0;
 	if (pix_height > 1.0)

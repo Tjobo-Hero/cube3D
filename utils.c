@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/09 11:26:45 by tvan-cit       #+#    #+#                */
-/*   Updated: 2020/03/20 12:53:45 by tim           ########   odam.nl         */
+/*   Created: 2020/03/09 11:26:45 by tvan-cit      #+#    #+#                 */
+/*   Updated: 2020/04/03 11:58:41 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	set_player_direction(t_vars *t, char c)
 {
 	if (c == 'N')
 		t->mid_ray = M_PI;
-	if (c == 'S')
+	else if (c == 'S')
 		t->mid_ray = 0;
-	if (c == 'E')
+	else if (c == 'E')
 		t->mid_ray = M_PI / 2;
-	if (c == 'W')
+	else if (c == 'W')
 		t->mid_ray = M_PI * 1.5;
 }
 
@@ -59,4 +59,10 @@ int		exit_program(t_vars *t)
 	write(1, "EXITED THE PROGRAM CLEAN\n", 25);
 	exit(0);
 	return (-1);
+}
+
+void		set_tile_width_and_height(t_vars *t)
+{
+	t->res3d_w = t->map->res_w;
+	t->res3d_h = t->map->res_h;
 }
