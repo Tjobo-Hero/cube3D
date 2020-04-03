@@ -6,7 +6,7 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/02 19:51:19 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/03 13:50:53 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/03 15:08:14 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int		initialize_mlx(t_vars *t)
 
 int		initialize_data(t_vars *t, t_list *map)
 {
+	set_tile_width_and_height(t);
 	mlx_get_screen_size(t->mlx2, &t->screen_x, &t->screen_y);
-	// printf("Screen_x: [%i]  ----> screen_y [%i]\n", t->screen_x, t->screen_y);
 	if (t->res3d_w > t->screen_x && map->save != 1)
 		t->res3d_w = t->screen_x;
 	if (t->res3d_h > t->screen_y && map->save != 1)
@@ -48,5 +48,4 @@ int		initialize_data(t_vars *t, t_list *map)
 	if (initialize_sprites(t))
 		return (1);
 	return (0);
-	
 }

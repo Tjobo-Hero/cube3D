@@ -6,12 +6,24 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:58:03 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/03 14:09:24 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/03 16:51:09 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
+# define LOOK_LEFT 123
+# define LOOK_RIGHT 124
+# define MOVE_UP 13
+# define MOVE_DOWN 1
+# define MOVE_RIGHT 0
+# define MOVE_UP2 126
+# define MOVE_DOWN2 125
+# define MOVE_LEFT 2
+# define HALFPI 1.57079632679
+# define PI 3.14159265359
+# define ONEPFPI 4.71238898038
+# define TWOPI 6.28318530718
 
 # include <mlx.h>
 # include <unistd.h>
@@ -75,50 +87,78 @@ typedef struct		s_ray_data
 
 typedef struct		s_texture_no
 {
-	void			*img_no;
-	char			*addr_no;
-	int				bits_per_pixel_no;
-	int				line_length_no;
-	int				endian_no;
-	void			*mlx_no;
-	int				img_width_no;
-	int				img_height_no;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+	void			*mlx;
+	int				img_width;
+	int				img_height;
+	int				img_h;
+	int				h1;
+	int				half_res_h;
+	float			pix_height;
+	int				height_text;
+	int				y_count;
+	float			text_step;
 }					t_texture_no;
 
 typedef struct		s_texture_so
 {
-	void			*img_so;
-	char			*addr_so;
-	int				bits_per_pixel_so;
-	int				line_length_so;
-	int				endian_so;
-	void			*mlx_so;
-	int				img_width_so;
-	int				img_height_so;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+	void			*mlx;
+	int				img_width;
+	int				img_height;
+	int				img_h;
+	int				h1;
+	int				half_res_h;
+	float			pix_height;
+	int				height_text;
+	int				y_count;
+	float			text_step;
 }					t_texture_so;
 
 typedef struct		s_texture_we
 {
-	void			*img_we;
-	char			*addr_we;
-	int				bits_per_pixel_we;
-	int				line_length_we;
-	int				endian_we;
-	void			*mlx_we;
-	int				img_width_we;
-	int				img_height_we;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+	void			*mlx;
+	int				img_width;
+	int				img_height;
+	int				img_h;
+	int				h1;
+	int				half_res_h;
+	float			pix_height;
+	int				height_text;
+	int				y_count;
+	float			text_step;
 }					t_texture_we;
 
 typedef struct		s_texture_ea
 {
-	void			*img_ea;
-	char			*addr_ea;
-	int				bits_per_pixel_ea;
-	int				line_length_ea;
-	int				endian_ea;
-	void			*mlx_ea;
-	int				img_width_ea;
-	int				img_height_ea;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+	void			*mlx;
+	int				img_width;
+	int				img_height;
+	int				img_h;
+	int				h1;
+	int				half_res_h;
+	float			pix_height;
+	int				height_text;
+	int				y_count;
+	float			text_step;
 }					t_texture_ea;
 
 typedef struct 		s_sprite
@@ -226,7 +266,7 @@ void				find_wall(t_vars *t, t_ray_data *r);
 
 // Drawing Labyrint
 void				maze(t_list *map, t_vars *t);
-int					my_mlx_pixel_put(t_vars *t, int x, int y, int color);
+void				draw_map(t_vars *t);
 
 //Drawing 3D
 void 				main_world(t_vars *t, t_ray_data *r);
@@ -243,6 +283,10 @@ void    			texture_north(t_vars *t, t_ray_data *r);
 void    			texture_south(t_vars *t, t_ray_data *r);
 void    			texture_east(t_vars *t, t_ray_data *r);
 void    			texture_west(t_vars *t, t_ray_data *r);
+void				texture_north2(t_vars *t);
+void				texture_south2(t_vars *t);
+void				texture_east2(t_vars *t);
+void				texture_west2(t_vars *t);
 int	   				initialize_textures(t_vars *t);
 
 //Sprites
@@ -250,6 +294,7 @@ int   				initialize_sprites(t_vars *t);
 void    			get_sprite_pos(t_vars *t, t_ray_data *r);
 void    			draw_sprites(t_vars *t);
 int					initialize_data(t_vars *t, t_list *map);
+void				init_angles(t_vars *t, t_ray_data *r);
 
 // Floor and Ceiling
 void    			draw_floor_and_ceiling(t_vars *t, int y_count, int x_count);

@@ -6,152 +6,149 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/18 11:58:57 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/03 11:48:44 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/03 16:45:37 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
 
+// void	texture_north2(t_vars *t)
+// {
+// 	 if (t->res3d_h % 2 == 0)
+// 		my_mlx_pixel_put3d(t, t->x_count, t->no->half_res_h - t->no->y_count, 
+// 		*(unsigned int*)(t->no->addr + ((t->no->img_h - (int)(t->no->text_step 
+// 		* t->no->y_count)) * t->no->line_length + t->no->h1)));
+//     draw_floor_and_ceiling(t, t->no->y_count, t->x_count);
+// }
+
 void    texture_north(t_vars *t, t_ray_data *r)
-{
-    char    *color;
-    float   pix_height;
-	int     y_count;
-    float   text_step;
-    int     height_text;                        // new
-    int 	test;
-	int		test1;
-	int 	test2;	
-	
-    pix_height = 1.0 / r->perp_dist;
-    height_text = (pix_height * t->res3d_h) / 2.0; // new
-	if (pix_height > 1.0)
-		pix_height = 0.999999;
-	pix_height = (pix_height * t->res3d_h) / 2.0;
-	y_count = 0;
-    text_step = ((t->no->img_height_no - 1.0) / 2.0) / height_text; // new
-	test = (t->no->img_height_no / 2);
-	test1 = (int)(r->pos_wall * t->no->img_width_no) * (t->no->bits_per_pixel_no / 8);
-	test2 = (t->res3d_h / 2);
-	while (y_count <= (int)pix_height) // Kan mis gaan door de + 1;
+{		
+    t->no->pix_height = 1.0 / r->perp_dist;
+    t->no->height_text = (t->no->pix_height * t->res3d_h) / 2.0;
+	if (t->no->pix_height > 1.0)
+		t->no->pix_height = 0.999999;
+	t->no->pix_height = (t->no->pix_height * t->res3d_h) / 2.0;
+	t->no->y_count = 0;
+    t->no->text_step = ((t->no->img_height - 1.0) / 2.0) / t->no->height_text;
+	t->no->img_h = (t->no->img_height / 2);
+	t->no->h1 = (int)(r->pos_wall * t->no->img_width) *
+	(t->no->bits_per_pixel / 8);
+	t->no->half_res_h = (t->res3d_h / 2);
+	while (t->no->y_count <= (int)t->no->pix_height)
 	{
-        color = t->no->addr_no + ((test + (int)(text_step * y_count)) * t->no->line_length_no + test1);
-        //  printf("x_count_no: %i\n", t->x_count);
-        my_mlx_pixel_put3d(t, t->x_count, test2 + y_count, *(unsigned int*)color);
-        color = t->no->addr_no + ((test - (int)(text_step * y_count)) * t->no->line_length_no + test1);
-		my_mlx_pixel_put3d(t, t->x_count, test2 - y_count, *(unsigned int*)color);
-        y_count++;
+        my_mlx_pixel_put3d(t, t->x_count, t->no->half_res_h + t->no->y_count, 
+		*(unsigned int*)(t->no->addr + ((t->no->img_h + (int)(t->no->text_step 
+		* t->no->y_count)) * t->no->line_length + t->no->h1)));
+		my_mlx_pixel_put3d(t, t->x_count, t->no->half_res_h - t->no->y_count, 
+		*(unsigned int*)(t->no->addr + ((t->no->img_h - (int)(t->no->text_step * 
+		t->no->y_count)) * t->no->line_length + t->no->h1)));
+        t->no->y_count++;
     }
-    if (t->res3d_h % 2 == 0)
-    {
-        color = t->no->addr_no + ((test - (int)(text_step * y_count)) * t->no->line_length_no + test1);
-		my_mlx_pixel_put3d(t, t->x_count, test2 - y_count, *(unsigned int*)color);
-    }
-    draw_floor_and_ceiling(t, y_count, t->x_count);
+	texture_north2(t);
 }
+
+// void	texture_south2(t_vars *t)
+// {
+// 	if (t->res3d_h % 2 == 0)
+// 		my_mlx_pixel_put3d(t, t->x_count, t->so->half_res_h - t->so->y_count, 
+// 		*(unsigned int*)(t->so->addr + ((t->so->img_h - (int)(t->so->text_step 
+// 		* t->so->y_count)) * t->so->line_length + t->so->h1)));
+//     draw_floor_and_ceiling(t, t->so->y_count, t->x_count);
+// }
 
 void    texture_south(t_vars *t, t_ray_data *r)
 {
-    char    *color;
-    float   pix_height;
-	int     y_count;
-    float   text_step;
-    int     height_text;
-    
-    pix_height = 1.0 / r->perp_dist;
-    height_text = (pix_height * t->res3d_h) / 2.0;
-	if (pix_height > 1.0)
-		pix_height = 0.999999;
-	pix_height = (pix_height * t->res3d_h) / 2.0;
-	y_count = 0;
-    text_step = ((t->so->img_height_so - 1.0) / 2.0) / height_text; // new
-	while (y_count <= (int)pix_height) // Kan mis gaan door de + 1;
+    t->so->pix_height = 1.0 / r->perp_dist;
+    t->so->height_text = (t->so->pix_height * t->res3d_h) / 2.0;
+	if (t->so->pix_height > 1.0)
+		t->so->pix_height = 0.999999;
+	t->so->pix_height = (t->so->pix_height * t->res3d_h) / 2.0;
+	t->so->y_count = 0;
+    t->so->text_step = ((t->so->img_height - 1.0) / 2.0) / t->so->height_text;
+	t->so->img_h = (t->so->img_height / 2);
+	t->so->h1 = (int)(r->pos_wall * t->so->img_width) *
+	(t->so->bits_per_pixel / 8);
+	t->so->half_res_h = (t->res3d_h / 2);
+	while (t->so->y_count <= (int)t->so->pix_height)
 	{
-        color = t->so->addr_so + (((t->so->img_height_so / 2) + (int)(text_step * y_count)) * t->so->line_length_so + (int)(r->pos_wall * t->so->img_width_so) *
-        (t->so->bits_per_pixel_so / 8));
-        //  printf("x_count_so: %i\n", t->x_count);
-        my_mlx_pixel_put3d(t, t->x_count, (t->res3d_h / 2) + y_count, *(unsigned int*)color);
-        color = t->so->addr_so + (((t->so->img_height_so / 2) - (int)(text_step * y_count)) * t->so->line_length_so + (int)(r->pos_wall * t->so->img_width_so) *
-        (t->so->bits_per_pixel_so / 8));
-		my_mlx_pixel_put3d(t, t->x_count, (t->res3d_h / 2) - y_count, *(unsigned int*)color);
-        y_count++;
+        my_mlx_pixel_put3d(t, t->x_count, t->so->half_res_h + t->so->y_count, 
+		*(unsigned int*)(t->so->addr + ((t->so->img_h + (int)(t->so->text_step 
+		* t->so->y_count)) * t->so->line_length + t->so->h1)));
+		my_mlx_pixel_put3d(t, t->x_count, t->so->half_res_h - t->so->y_count, 
+		*(unsigned int*)(t->so->addr + ((t->so->img_h - (int)(t->so->text_step * 
+		t->so->y_count)) * t->so->line_length + t->so->h1)));
+        t->so->y_count++;
     }
-    if (t->res3d_h % 2 == 0)
-    {
-        color = t->so->addr_so + (((t->so->img_height_so / 2) - (int)(text_step * y_count)) * t->so->line_length_so + (int)(r->pos_wall * t->so->img_width_so) *
-        (t->so->bits_per_pixel_so / 8));
-		my_mlx_pixel_put3d(t, t->x_count, (t->res3d_h / 2) - y_count, *(unsigned int*)color);
-    }
-    draw_floor_and_ceiling(t, y_count, t->x_count);
+	texture_south2(t);
 }
+
+// void	texture_east2(t_vars *t)
+// {
+// 	if (t->res3d_h % 2 == 0)
+// 		my_mlx_pixel_put3d(t, t->x_count, t->ea->half_res_h - t->ea->y_count, 
+// 		*(unsigned int*)(t->ea->addr + ((t->ea->img_h - (int)(t->ea->text_step 
+// 		* t->ea->y_count)) * t->ea->line_length + t->ea->h1)));
+//     draw_floor_and_ceiling(t, t->ea->y_count, t->x_count);
+// }
 
 void    texture_east(t_vars *t, t_ray_data *r)
 {
-    char    *color;
-    float   pix_height;
-	int     y_count;
-    float   text_step;
-    int     height_text;
-
-
-    pix_height = 1.0 / r->perp_dist;
-    height_text = (pix_height * t->res3d_h) / 2.0;
-	if (pix_height > 1.0)
-		pix_height = 0.999999;
-	pix_height = (pix_height * t->res3d_h) / 2.0;
-	y_count = 0;
-    text_step = ((t->ea->img_height_ea - 1.0) / 2.0) / height_text; // new
-	while (y_count <= (int)pix_height) // Kan mis gaan door de + 1;
+    t->ea->pix_height = 1.0 / r->perp_dist;
+    t->ea->height_text = (t->ea->pix_height * t->res3d_h) / 2.0;
+	if (t->ea->pix_height > 1.0)
+		t->ea->pix_height = 0.999999;
+	t->ea->pix_height = (t->ea->pix_height * t->res3d_h) / 2.0;
+	t->ea->y_count = 0;
+    t->ea->text_step = ((t->ea->img_height - 1.0) / 2.0) / t->ea->height_text;
+	t->ea->img_h = (t->ea->img_height / 2);
+	t->ea->h1 = (int)(r->pos_wall * t->ea->img_width) *
+	(t->ea->bits_per_pixel / 8);
+	t->ea->half_res_h = (t->res3d_h / 2);
+	while (t->ea->y_count <= (int)t->ea->pix_height)
 	{
-        color = t->ea->addr_ea + (((t->ea->img_height_ea / 2) + (int)(text_step * y_count)) * t->ea->line_length_ea + (int)(r->pos_wall * t->ea->img_width_ea) *
-        (t->ea->bits_per_pixel_ea / 8));
-        //  printf("x_count_ea: %i\n", t->x_count);
-        my_mlx_pixel_put3d(t, t->x_count, (t->res3d_h / 2) + y_count, *(unsigned int*)color);
-        color = t->ea->addr_ea + (((t->ea->img_height_ea / 2) - (int)(text_step * y_count)) * t->ea->line_length_ea + (int)(r->pos_wall * t->ea->img_width_ea) *
-        (t->ea->bits_per_pixel_ea / 8));
-		my_mlx_pixel_put3d(t, t->x_count, (t->res3d_h / 2) - y_count, *(unsigned int*)color);
-        y_count++;
+        my_mlx_pixel_put3d(t, t->x_count, t->ea->half_res_h + t->ea->y_count, 
+		*(unsigned int*)(t->ea->addr + ((t->ea->img_h + (int)(t->ea->text_step 
+		* t->ea->y_count)) * t->ea->line_length + t->ea->h1)));
+		my_mlx_pixel_put3d(t, t->x_count, t->ea->half_res_h - t->ea->y_count, 
+		*(unsigned int*)(t->ea->addr + ((t->ea->img_h - (int)(t->ea->text_step * 
+		t->ea->y_count)) * t->ea->line_length + t->ea->h1)));
+        t->ea->y_count++;
     }
-    if (t->res3d_h % 2 == 0)
-    {
-        color = t->ea->addr_ea + (((t->ea->img_height_ea / 2) - (int)(text_step * y_count)) * t->ea->line_length_ea + (int)(r->pos_wall * t->ea->img_width_ea) *
-        (t->ea->bits_per_pixel_ea / 8));
-		my_mlx_pixel_put3d(t, t->x_count, (t->res3d_h / 2) - y_count, *(unsigned int*)color);
-    }
-    draw_floor_and_ceiling(t, y_count, t->x_count);
+	texture_east2(t);
 }
+
+// void	texture_west2(t_vars *t)
+// {
+// 	if (t->res3d_h % 2 == 0)
+// 		my_mlx_pixel_put3d(t, t->x_count, t->we->half_res_h - t->we->y_count, 
+// 		*(unsigned int*)(t->we->addr + ((t->we->img_h - (int)(t->we->text_step 
+// 		* t->we->y_count)) * t->we->line_length + t->we->h1)));
+//     draw_floor_and_ceiling(t, t->we->y_count, t->x_count);
+// }
 
 void    texture_west(t_vars *t, t_ray_data *r)
 {
-    char   *color;
-    float   pix_height;
-	int     y_count;
-    float   text_step;
-    int     height_text;
-    
-    pix_height = 1.0 / r->perp_dist;
-    height_text = (pix_height * t->res3d_h) / 2.0;
-	if (pix_height > 1.0)
-		pix_height = 0.999999;
-	pix_height = (pix_height * t->res3d_h) / 2.0;
-	y_count = 0;
-    text_step = ((t->we->img_height_we - 1.0) / 2.0) / height_text; // new
-	while (y_count <= (int)pix_height) // Kan mis gaan door de + 1;
+   	t->we->pix_height = 1.0 / r->perp_dist;
+    t->we->height_text = (t->we->pix_height * t->res3d_h) / 2.0;
+	if (t->we->pix_height > 1.0)
+		t->we->pix_height = 0.999999;
+	t->we->pix_height = (t->we->pix_height * t->res3d_h) / 2.0;
+	t->we->y_count = 0;
+    t->we->text_step = ((t->we->img_height - 1.0) / 2.0) / t->we->height_text;
+	t->we->img_h = (t->we->img_height / 2);
+	t->we->h1 = (int)(r->pos_wall * t->we->img_width) *
+	(t->we->bits_per_pixel / 8);
+	t->we->half_res_h = (t->res3d_h / 2);
+	while (t->we->y_count <= (int)t->we->pix_height)
 	{
-        color = t->we->addr_we + (((t->we->img_height_we / 2) + (int)(text_step * y_count)) * t->we->line_length_we + (int)(r->pos_wall * t->we->img_width_we) *
-        (t->we->bits_per_pixel_we / 8));
-        my_mlx_pixel_put3d(t, t->x_count, (t->res3d_h / 2) + y_count, *(unsigned int*)color);
-        color = t->we->addr_we + (((t->we->img_height_we / 2) - (int)(text_step * y_count)) * t->we->line_length_we + (int)(r->pos_wall * t->we->img_width_we) *
-        (t->we->bits_per_pixel_we / 8));
-		my_mlx_pixel_put3d(t, t->x_count, (t->res3d_h / 2) - y_count, *(unsigned int*)color);
-        y_count++;
+        my_mlx_pixel_put3d(t, t->x_count, t->we->half_res_h + t->we->y_count, 
+		*(unsigned int*)(t->we->addr + ((t->we->img_h + (int)(t->we->text_step 
+		* t->we->y_count)) * t->we->line_length + t->we->h1)));
+		my_mlx_pixel_put3d(t, t->x_count, t->we->half_res_h - t->we->y_count, 
+		*(unsigned int*)(t->we->addr + ((t->we->img_h - (int)(t->we->text_step * 
+		t->we->y_count)) * t->we->line_length + t->we->h1)));
+        t->we->y_count++;
     }
-    if (t->res3d_h % 2 == 0)
-    {
-        color = t->we->addr_we + (((t->we->img_height_we / 2) - (int)(text_step * y_count)) * t->we->line_length_we + (int)(r->pos_wall * t->we->img_width_we) *
-        (t->we->bits_per_pixel_we / 8));
-		my_mlx_pixel_put3d(t, t->x_count, (t->res3d_h / 2) - y_count, *(unsigned int*)color);
-    }
-    draw_floor_and_ceiling(t, y_count, t->x_count);
+	texture_west2(t);
 }
 

@@ -6,7 +6,7 @@
 #    By: tvan-cit <tvan-cit@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/22 15:33:02 by tvan-cit      #+#    #+#                  #
-#    Updated: 2020/04/03 12:27:23 by vancitters    ########   odam.nl          #
+#    Updated: 2020/04/03 16:45:52 by vancitters    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC = 	main.c get_next_line.c get_next_line_utils.c get_map_info.c \
 		check_2d_array.c maze.c all_map_functions.c utils.c \
 		find_wall.c draw_world.c move_player.c \
 		textures.c initialize_textures.c draw_floor_and_ceiling.c \
-		initialize_sprite.c sprites.c draw_sprites.c initialize_data.c \
+		initialize_sprite.c sprites.c draw_sprites.c initialize_data.c textures2.c \
 
 LIB	  =	$(subst .c,.o, $(SRC))
 
