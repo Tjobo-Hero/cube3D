@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   draw_world.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/22 15:52:28 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/03 15:08:00 by vancitters    ########   odam.nl         */
+/*   Created: 2020/03/12 11:55:21 by tvan-cit      #+#    #+#                 */
+/*   Updated: 2020/04/08 10:23:21 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
 
-int		main(int argc, char **argv)
+void		my_mlx_pixel_put3d(t_vars *t, int x, int y, int color)
 {
-	t_list	map;
-	t_vars	t;
+	char	*dst;
 
-	t.map = &map;	
-	write(1, ">>>CHECKING MAP<<<\n", 20);
-	if (all_map_functions(&map, argc, argv))
+	if (t->addr_count % 2 == 0)
 	{
-		write(1, ">>>CHECK INPUT<<<\n", 19);
-		return (-1);
+		dst = t->addr1 + (y * t->line_length2 + x *
+		(t->bits_per_pixel2 / 8));
+		*(unsigned int*)dst = color;
 	}
-	draw_map(&t);
-	maze(&map, &t);
-	return (0);
+	else
+	{
+		dst = t->addr2 + (y * t->line_length2 + x *
+		(t->bits_per_pixel2 / 8));
+		*(unsigned int*)dst = color;
+	}
 }

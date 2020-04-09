@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/09 11:26:45 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/03 16:50:37 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/03 18:46:28 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ void	draw_map(t_vars *t)
 				set_player_direction(t, t->map->map_2d[y][x]);
 				t->x = x + 0.5;
 				t->y = y + 0.5;
-				printf("x: %f\n", t->x);
-				printf("y: %f\n", t->y);
 			}
 			x++;
 		}

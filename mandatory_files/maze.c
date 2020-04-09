@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/21 11:31:23 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/03 17:15:26 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/08 20:14:28 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	draw_ray(float ray_angle, t_vars *t)
 
 void	shoot_rays(t_vars *t)
 {
-	float 	start;
-	float 	ray;
-	float 	increment;
-	
-	increment = 2.0 / t->res3d_w; /// later veranderen naar res_3d_w
+	float	start;
+	float	ray;
+	float	increment;
+
+	increment = 2.0 / t->res3d_w;
 	start = -1;
 	t->x_count = 0;
 	while (start <= 1)
@@ -43,7 +43,6 @@ void	shoot_rays(t_vars *t)
 		t->x_count++;
 	}
 }
-
 
 void	rotate_player(float rot, t_vars *t)
 {
@@ -60,7 +59,8 @@ int		lego(int key, t_vars *t)
 {
 	if (key == LOOK_LEFT || key == LOOK_RIGHT)
 		t->turn = 0;
-	else if (key == MOVE_UP || key == MOVE_UP2 || key == MOVE_DOWN || key == MOVE_DOWN2)
+	else if (key == MOVE_UP || key == MOVE_UP2 ||
+	key == MOVE_DOWN || key == MOVE_DOWN2)
 		t->move = 0;
 	else if (key == MOVE_RIGHT || key == MOVE_LEFT)
 		t->crab = 0;
@@ -99,7 +99,7 @@ int		move(t_vars *t)
 	shoot_rays(t);
 	if (t->addr_count % 2 == 0)
 		mlx_put_image_to_window(t->mlx2, t->win2, t->img1, 0, 0);
-	else 
+	else
 		mlx_put_image_to_window(t->mlx2, t->win2, t->img2, 0, 0);
 	if (t->addr_count == 1000)
 		t->addr_count = 0;
@@ -108,10 +108,10 @@ int		move(t_vars *t)
 
 void	maze(t_list *map, t_vars *t)
 {
-	t_texture_no 	no;
-	t_texture_so 	so;
-	t_texture_we 	we;
-	t_texture_ea 	ea;
+	t_texture_no	no;
+	t_texture_so	so;
+	t_texture_we	we;
+	t_texture_ea	ea;
 	t_sprite		sp;
 
 	t->we = &we;
@@ -121,15 +121,15 @@ void	maze(t_list *map, t_vars *t)
 	t->sp = &sp;
 	if (initialize_data(t, map))
 	{
-		write(1, "initialize error\n", 17);
-		exit_program(t);
-	}
-	if (map->save == 1)
-	{
-		// make_bmp("screenshot->bmp", t->addr1, map->res_w, map->res_h); // moet ik nog schrijven
+		write(1, ">>> INITIALIZE ERROR <<<\n", 25);
 		exit_program(t);
 	}
 	shoot_rays(t);
+	if (map->save == 1)
+	{
+		make_bmp("screenshot.bmp", t->addr1, t->res3d_w, t->res3d_h);
+		exit_program(t);
+	}
 	mlx_put_image_to_window(t->mlx2, t->win2, t->img1, 0, 0);
 	mlx_hook(t->win2, 2, 1L << 0, press, t);
 	mlx_hook(t->win2, 3, 1L << 0, lego, t);

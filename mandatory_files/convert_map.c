@@ -5,14 +5,14 @@
 /*                                                     +:+                    */
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/06 11:23:51 by tvan-cit       #+#    #+#                */
-/*   Updated: 2020/03/18 14:15:50 by tim           ########   odam.nl         */
+/*   Created: 2020/02/06 11:23:51 by tvan-cit      #+#    #+#                 */
+/*   Updated: 2020/04/09 10:31:51 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
 
-int			ft_strlen_and_line_check(int i, t_list *map)
+int		ft_strlen_and_line_check(int i, t_list *map)
 {
 	int column_count;
 
@@ -37,7 +37,7 @@ char		**free_willy(char **newstr, int i_n)
 	return (NULL);
 }
 
-char		*ft_strjoin_cube(char const *s1, char const *s2)
+char	*ft_strjoin_cube(char const *s1, char const *s2)
 {
 	char	*newstr;
 	int		i;
@@ -66,7 +66,7 @@ char		*ft_strjoin_cube(char const *s1, char const *s2)
 	return (newstr);
 }
 
-int			make_2d_array(t_list *map)
+int		make_2d_array(t_list *map)
 {
 	int y;
 	int x;

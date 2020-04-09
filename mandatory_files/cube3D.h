@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:58:03 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/03 16:51:09 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/09 13:00:42 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ typedef struct		s_texture_ea
 	float			text_step;
 }					t_texture_ea;
 
-typedef struct 		s_sprite
+typedef struct		s_sprite
 {
 	void			*img;
 	char			*addr;
@@ -171,13 +171,16 @@ typedef struct 		s_sprite
 	void			*mlx;
 	int				img_width;
 	int				img_height;
-	float 			pos_wall[10];
-	float 			eucl_dist[10];
-	float 			step;
+	float			pos_wall[10];
+	float			eucl_dist[10];
+	float			step;
 	int				count;
 	float			sp_angle_l;
 	float			sp_angle_r;
-	
+	float			pix_height;
+	int				height_text;
+	int				y_count;
+	float			text_step;
 }					t_sprite;
 
 typedef	struct		s_vars
@@ -202,7 +205,7 @@ typedef	struct		s_vars
 	t_ray_data		*r;
 	t_texture_no	*no;
 	t_texture_so	*so;
-	t_texture_we 	*we;
+	t_texture_we	*we;
 	t_texture_ea	*ea;
 	t_sprite		*sp;
 	void			*img1;
@@ -215,7 +218,7 @@ typedef	struct		s_vars
 	void			*mlx2;
 	void			*win2;
 	int				res3d_h;
-	int 			res3d_w;
+	int				res3d_w;
 	int				x_count;
 	int				screen_x;
 	int				screen_y;
@@ -250,7 +253,7 @@ void				get_resolution(char **line, t_list *map);
 char				*get_texture(char **line);
 
 // Functions getting bottom map data
-int 				get_map(char **line, t_list *map);
+int					get_map(char **line, t_list *map);
 int					convert_map(t_list *map);
 char				*ft_strjoin_cube(char const *s1, char const *s2);
 int					ft_strlen_and_line_check(int i, t_list *map);
@@ -269,35 +272,38 @@ void				maze(t_list *map, t_vars *t);
 void				draw_map(t_vars *t);
 
 //Drawing 3D
-void 				main_world(t_vars *t, t_ray_data *r);
+void				main_world(t_vars *t, t_ray_data *r);
 void				my_mlx_pixel_put3d(t_vars *t, int x, int y, int color);
 
 // UTILS
-void 				set_player_direction(t_vars *t, char c);
+void				set_player_direction(t_vars *t, char c);
 void				screen_cleaner(t_vars *t);
 int					exit_program(t_vars *t);
 void				set_tile_width_and_height(t_vars *t);
 
+//BMP
+void				make_bmp(char *name, char *addr, int width, int height);
+
 //Textures
-void    			texture_north(t_vars *t, t_ray_data *r);
-void    			texture_south(t_vars *t, t_ray_data *r);
-void    			texture_east(t_vars *t, t_ray_data *r);
-void    			texture_west(t_vars *t, t_ray_data *r);
+void				texture_north(t_vars *t, t_ray_data *r);
+void				texture_south(t_vars *t, t_ray_data *r);
+void				texture_east(t_vars *t, t_ray_data *r);
+void				texture_west(t_vars *t, t_ray_data *r);
 void				texture_north2(t_vars *t);
 void				texture_south2(t_vars *t);
 void				texture_east2(t_vars *t);
 void				texture_west2(t_vars *t);
-int	   				initialize_textures(t_vars *t);
+int					initialize_textures(t_vars *t);
 
 //Sprites
-int   				initialize_sprites(t_vars *t);
-void    			get_sprite_pos(t_vars *t, t_ray_data *r);
-void    			draw_sprites(t_vars *t);
+int					initialize_sprites(t_vars *t);
+void				get_sprite_pos(t_vars *t, t_ray_data *r);
+void				draw_sprites(t_vars *t);
 int					initialize_data(t_vars *t, t_list *map);
 void				init_angles(t_vars *t, t_ray_data *r);
 
 // Floor and Ceiling
-void    			draw_floor_and_ceiling(t_vars *t, int y_count, int x_count);
+void				draw_floor_and_ceiling(t_vars *t, int y_count, int x_count);
 
 //move player:
 void				move_crab(t_vars *t, float move);
