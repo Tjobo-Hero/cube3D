@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:58:03 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/09 13:00:42 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/13 18:36:09 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct		s_list
 	char			**map_2d;
 	int				n_count;
 	int				save;
+	int				begin_map;
 }					t_list;
 
 typedef struct		s_ray_data
@@ -235,7 +236,7 @@ int		main(int argc, char **argv);
 int					get_next_line(int fd, char **line);
 size_t				ft_strlen(const char *s);
 char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strdup(const char *s1);
+char				*ft_strdup(char *s1);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 char				*ft_strchr(const char *s, int c);
 
@@ -246,20 +247,20 @@ void				clear_struct(t_list *map);
 int					all_map_functions(t_list *map, int argc, char **argv);
 
 // Functions getting top map data
-int					get_map_info(char **line, t_list *map);
-void				get_color(char **line, t_list *map);
-int					convert_color(char **line);
-void				get_resolution(char **line, t_list *map);
-char				*get_texture(char **line);
+int					get_map_info(char *line, t_list *map);
+int					get_color(char *line, t_list *map);
+int					convert_color(char *line, int *i);
+int					get_resolution(char *line, t_list *map);
+int					get_texture(char *line, t_list *map, char c);
 
 // Functions getting bottom map data
-int					get_map(char **line, t_list *map);
-int					convert_map(t_list *map);
-char				*ft_strjoin_cube(char const *s1, char const *s2);
+int					get_map(char *line, t_list *map);
+int					check_if_valid_map(t_list *map);
+char				*ft_strjoin_cube(char *s1, char *s2);
 int					ft_strlen_and_line_check(int i, t_list *map);
 
 // Functions checking if valid map
-int					check_if_valid_map(t_list *map);
+int					check_if_valid_info(t_list *map);
 void				put_color_to_hex(t_list *map);
 int					check_rgb(t_list *map);
 int					check_2d_array(t_list *map);
@@ -280,6 +281,7 @@ void				set_player_direction(t_vars *t, char c);
 void				screen_cleaner(t_vars *t);
 int					exit_program(t_vars *t);
 void				set_tile_width_and_height(t_vars *t);
+int					put_str(char *str, int num);
 
 //BMP
 void				make_bmp(char *name, char *addr, int width, int height);

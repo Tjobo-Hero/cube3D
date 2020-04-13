@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/21 11:31:23 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/08 20:14:28 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/13 18:43:14 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void	maze(t_list *map, t_vars *t)
 	t->sp = &sp;
 	if (initialize_data(t, map))
 	{
-		write(1, ">>> INITIALIZE ERROR <<<\n", 25);
+		write(1, ">>>INITIALIZE ERROR <<<\n", 25);
 		exit_program(t);
 	}
 	shoot_rays(t);

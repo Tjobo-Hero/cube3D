@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/18 13:28:17 by tim            #+#    #+#                */
-/*   Updated: 2020/03/18 13:28:30 by tim           ########   odam.nl         */
+/*   Created: 2020/03/18 13:28:17 by tim           #+#    #+#                 */
+/*   Updated: 2020/04/10 13:38:21 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (newstr);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(char *s1)
 {
 	char	*ptr;
 	int		i;

@@ -6,11 +6,24 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/09 11:26:45 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/03 18:46:28 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/13 15:44:23 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
+
+int		put_str(char *str, int num)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (num);
+}
 
 void	set_player_direction(t_vars *t, char c)
 {
@@ -45,16 +58,14 @@ void	screen_cleaner(t_vars *t)
 
 int		exit_program(t_vars *t)
 {
-	// int i;
-	// int j;
-	
-	// i = 0;
-	// j = 0;
-	// while (t->map->map_2d[i])
-	// {
-	// 	free(t->map->map_2d[i]);
-	// 	i++;
-	// }
+	int i;
+
+	i = 0;
+	while (i < t->map->row_count)
+	{
+		free(t->map->map_2d[i]);
+		i++;
+	}
 	free(t->map->map_2d);
 	write(1, "EXITED THE PROGRAM CLEAN\n", 25);
 	exit(0);

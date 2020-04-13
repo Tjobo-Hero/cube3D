@@ -5,74 +5,143 @@
 /*                                                     +:+                    */
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/06 15:30:42 by tvan-cit       #+#    #+#                */
-/*   Updated: 2020/03/11 15:29:59 by tvan-cit      ########   odam.nl         */
+/*   Created: 2020/02/06 15:30:42 by tvan-cit      #+#    #+#                 */
+/*   Updated: 2020/04/13 15:43:01 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
 
-int		check_character(char c, t_list *map, int y)
+int		check_character(t_list *map, char c)
 {
-	if (map->map_2d[y][0] != '1')
-	{
-		write(1, ">>>WRONG FIRST CHARACTER<<<\n", 29);
-		return (1);
-	}
-	if (map->map_2d[y][map->column_count - 1] != '1')
-	{
-		write(1, ">>>WRONG LAST CHARACTER<<<\n", 28);
-		return (1);
-	}
-	if (c == '1' || c == '0' || c == '2')
+	if (c == '1' || c == '0' || c == '2' || c == ' ')
 		return (0);
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 	{
 		map->n_count++;
+		if (map->n_count > 1)
+			return (put_str(">>>TOO MANY STARTING POSITIONS<<<\n", 1));
 		return (0);
 	}
-	write(1, ">>>WRONG CHARACTER IN MAP<<<\n", 30);
-	return (1);
+	return (put_str(">>>WRONG CHARACTER IN MAP<<<\n", 1));
 }
 
-int		check_first_and_last_line(t_list *map, int x, int y)
+int		check_firstline(t_list *map, int y)
 {
-	while (x < map->column_count)
+	int x;
+
+	x = 0;
+	while (map->map_2d[y][x] == ' ')
+		x++;
+	if (!(map->map_2d[y][x] == '\0' || map->map_2d[y][x] == '1'))
+		return (1);
+	while (x < (int)ft_strlen(map->map_2d[y]))
 	{
-		if (map->map_2d[y][x] != '1')
-		{
-			write(1, ">>>WRONG FIRST OR LAST LINE<<<\n", 32);
+		if (map->map_2d[y][x] == '1')
+			x++;
+		else if (map->map_2d[y][x] == ' ' && (map->map_2d[y + 1][x] == ' '
+		|| map->map_2d[y + 1][x] == '1'))
+			x++;
+		else
 			return (1);
+	}
+	return (0);
+}
+
+int		check_lastline(t_list *map, int y)
+{
+	int x;
+
+	x = 0;
+	while (map->map_2d[y][x] == ' ')
+		x++;
+	if (!(map->map_2d[y][x] == '\0' || map->map_2d[y][x] == '1'))
+		return (1);
+	while (x < (int)ft_strlen(map->map_2d[y]) && map->map_2d[y][x] != '\0')
+	{
+		if (map->map_2d[y][x] == '1')
+			x++;
+		else if (map->map_2d[y][x] == ' ' && (map->map_2d[y - 1][x] == ' '
+		|| map->map_2d[y - 1][x] == '1'))
+			x++;
+		else
+		{
+			return (1);
+		}
+	}
+	return (0);
+}
+
+int		check_middle_middle(t_list *map, int y, int x)
+{
+	while (x < (int)ft_strlen(map->map_2d[y]))
+	{
+		if (check_character(map, map->map_2d[y][x]))
+			return (1);
+		if (map->map_2d[y][x] == ' ')
+		{
+			if (!(map->map_2d[y - 1][x] == ' ' || map->map_2d[y - 1][x] == '1'))
+				return (1);
+			if (!(map->map_2d[y + 1][x] == ' ' || map->map_2d[y + 1][x] == '1'))
+				return (1);
+			if (x - 1 >= 0 && !(map->map_2d[y][x - 1] == ' '
+			|| map->map_2d[y][x - 1] == '1'))
+				return (1);
+			if (x + 1 < (int)ft_strlen(map->map_2d[y]) &&
+			!(map->map_2d[y][x + 1] == ' ' || map->map_2d[y][x + 1] == '1'))
+				return (1);
 		}
 		x++;
 	}
 	return (0);
 }
 
-int		check_2d_array(t_list *map)
+int		check_middle(t_list *map, int y)
 {
 	int x;
+
+	x = 0;
+	while (map->map_2d[y][x] == ' ')
+		x++;
+	if (!(map->map_2d[y][x] == '\0' || map->map_2d[y][x] == '1'))
+		return (1);
+	if (check_middle_middle(map, y, x))
+		return (1);
+	x = (int)ft_strlen(map->map_2d[y]) - 1;
+	while (map->map_2d[y][x] == ' ' && x >= 0)
+		x--;
+	if (x == -1 && (map->map_2d[y][0] == '1' || map->map_2d[y][0] == ' '))
+		return (0);
+	if (map->map_2d[y][x] != '1')
+		return (1);
+	return (0);
+}
+
+int		check_2d_array(t_list *map)
+{
 	int y;
 
 	y = 0;
-	x = 0;
 	while (y < map->row_count)
 	{
-		if (y == 0 || y == map->row_count - 1)
+		if (y == 0)
 		{
-			if (check_first_and_last_line(map, x, y))
-				return (1);
+			if (check_firstline(map, y))
+				return (put_str(">>>WRONG FIRST LINE<<<\n", 1));
 		}
-		while (x < map->column_count)
+		if (y > 0 && y < map->row_count - 1)
 		{
-			if (check_character(map->map_2d[y][x], map, y))
-				return (1);
-			x++;
+			if (check_middle(map, y))
+				return (put_str(">>>WRONG MAP MIDDLE<<<\n", 1));
 		}
-		x = 0;
+		if (y == map->row_count - 1)
+		{
+			if (check_lastline(map, y))
+				return (put_str(">>>WRONG LAST LINE<<<\n", 1));
+		}
 		y++;
 	}
 	if (map->n_count != 1)
-		return (1);
+		return (put_str(">>>NO STARTING POINT\n", 1));
 	return (0);
 }

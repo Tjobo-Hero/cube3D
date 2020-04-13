@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/04 11:33:22 by tvan-cit       #+#    #+#                */
-/*   Updated: 2020/03/23 11:41:13 by tim           ########   odam.nl         */
+/*   Created: 2020/02/04 11:33:22 by tvan-cit      #+#    #+#                 */
+/*   Updated: 2020/04/10 17:17:55 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	clear_struct(t_list *map)
 {
-	map->res_w = 0;
-	map->res_h = 0;
+	map->res_w = -1;
+	map->res_h = -1;
 	map->no_texture = NULL;
 	map->so_texture = NULL;
 	map->we_texture = NULL;
@@ -31,9 +31,11 @@ void	clear_struct(t_list *map)
 	map->column_count = 0;
 	map->n_count = 0;
 	map->save = 0;
+	map->map_str = NULL;
+	map->begin_map = 0;
 }
 
-int		get_map(char **line, t_list *map)
+int		get_map(char *line, t_list *map)
 {
 	char	*temp;
 
@@ -41,7 +43,7 @@ int		get_map(char **line, t_list *map)
 		map->map_str = ft_strdup("");
 	temp = map->map_str;
 	map->map_str = ft_strjoin_cube(map->map_str,
-	(const char*)(*line));
+	line);
 	if (!map->map_str)
 		return (1);
 	free(temp);

@@ -6,7 +6,7 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/02 19:51:19 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/09 10:33:36 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/10 11:31:57 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		resolution_check(t_vars *t, t_list *map)
 	{
 		if (t->res3d_w > 16384)
 		{
-			write(1, ">>> MAX BPM WITH IS 16384---", 28);
+			write(1, ">>> MAX BPM WIDTH IS 16384---", 28);
 			return (1);
 		}
 		if (t->res3d_h > 4000 || t->res3d_h > 4000)
