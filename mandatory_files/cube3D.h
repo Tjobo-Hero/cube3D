@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:58:03 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/13 18:36:09 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 11:06:13 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct		s_list
 	int				n_count;
 	int				save;
 	int				begin_map;
+	int				comma;
 }					t_list;
 
 typedef struct		s_ray_data
@@ -249,7 +250,7 @@ int					all_map_functions(t_list *map, int argc, char **argv);
 // Functions getting top map data
 int					get_map_info(char *line, t_list *map);
 int					get_color(char *line, t_list *map);
-int					convert_color(char *line, int *i);
+int					convert_color(char *line, int *i, t_list *map);
 int					get_resolution(char *line, t_list *map);
 int					get_texture(char *line, t_list *map, char c);
 

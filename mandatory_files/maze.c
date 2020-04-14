@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/21 11:31:23 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/13 18:43:14 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 11:37:08 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,13 @@ int		move(t_vars *t)
 	return (1);
 }
 
+int		leave_game(t_vars *t)
+{
+	mlx_destroy_window(t->mlx2, t->win2);
+	exit_program(t);
+	return (0);
+}
+
 void	maze(t_list *map, t_vars *t)
 {
 	t_texture_no	no;
@@ -133,6 +140,7 @@ void	maze(t_list *map, t_vars *t)
 	mlx_put_image_to_window(t->mlx2, t->win2, t->img1, 0, 0);
 	mlx_hook(t->win2, 2, 1L << 0, press, t);
 	mlx_hook(t->win2, 3, 1L << 0, lego, t);
+	mlx_hook(t->win2, 17, 1L << 17, leave_game, t);
 	mlx_loop_hook(t->mlx2, move, t);
 	mlx_loop(t->mlx2);
 }

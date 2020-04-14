@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 14:54:53 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/13 21:44:08 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 11:33:13 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,26 @@ int		get_resolution(char *line, t_list *map)
 	return (0);
 }
 
-int		convert_color(char *line, int *i)
+int		convert_color(char *line, int *i, t_list *map)
 {
 	int num;
 
 	num = 0;
-	while (!(line[*i] >= '0' && line[*i] <= '9') && line[*i] != '\0')
-	{
-		if (line[*i] == '-')
-			return (-1);
+	if (line[*i] == 'C' || line[*i] == 'F')
 		(*i)++;
-	}
+	while (line[*i] == ' ')
+		(*i)++;
+	if (line[*i] == '-')
+		return (-1);
+	else if (line[*i] == ',' && map->comma == 0)
+		return (-1);
+	else if (line[*i] != ',' && map->comma >= 1)
+		return (-1);
+	else if (line[*i] == ',' && map->comma >= 1)
+		(*i)++;
+	while (line[*i] == ' ')
+		(*i)++;
+	map->comma++;
 	while (line[*i] >= '0' && line[*i] <= '9')
 	{
 		num = num * 10 + (line[*i] - 48);
@@ -120,18 +129,25 @@ int		get_color(char *line, t_list *map)
 	int i;
 
 	i = 0;
+	map->comma = 0;
 	if (*line == 'F')
 	{
-		map->f_color_red = convert_color(line, &i);
-		map->f_color_green = convert_color(line, &i);
-		map->f_color_blue = convert_color(line, &i);
+		map->f_color_red = convert_color(line, &i, map);
+		map->f_color_green = convert_color(line, &i, map);
+		map->f_color_blue = convert_color(line, &i, map);
+		if (map->f_color_red == -1 || map->f_color_green == -1
+		|| map->f_color_blue == -1)
+			return (put_str(">>> COMMMA/NEGATIVE FLOOR?<<<\n", 1));
 		return (check_end_line(line, &i));
 	}
 	if (*line == 'C')
 	{
-		map->c_color_red = convert_color(line, &i);
-		map->c_color_green = convert_color(line, &i);
-		map->c_color_blue = convert_color(line, &i);
+		map->c_color_red = convert_color(line, &i, map);
+		map->c_color_green = convert_color(line, &i, map);
+		map->c_color_blue = convert_color(line, &i, map);
+		if (map->c_color_red == -1 || map->c_color_green == -1
+		|| map->c_color_blue == -1)
+			return (put_str(">>> COMMMA/NEGATIVE CEILING?<<<\n", 1));
 		return (check_end_line(line, &i));
 	}
 	return (0);
