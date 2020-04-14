@@ -6,25 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:30:42 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/13 15:43:01 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 11:53:44 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
-
-int		check_character(t_list *map, char c)
-{
-	if (c == '1' || c == '0' || c == '2' || c == ' ')
-		return (0);
-	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
-	{
-		map->n_count++;
-		if (map->n_count > 1)
-			return (put_str(">>>TOO MANY STARTING POSITIONS<<<\n", 1));
-		return (0);
-	}
-	return (put_str(">>>WRONG CHARACTER IN MAP<<<\n", 1));
-}
 
 int		check_firstline(t_list *map, int y)
 {

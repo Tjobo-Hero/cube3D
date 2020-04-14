@@ -6,7 +6,7 @@
 #    By: tvan-cit <tvan-cit@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/22 15:33:02 by tvan-cit      #+#    #+#                  #
-#    Updated: 2020/04/13 15:17:15 by vancitters    ########   odam.nl          #
+#    Updated: 2020/04/14 16:11:44 by vancitters    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,10 @@ SRC		= 	main.c get_next_line.c get_next_line_utils.c get_map_info.c \
 			check_2d_array.c maze.c all_map_functions.c utils.c \
 			find_wall.c draw_world.c move_player.c \
 			textures.c initialize_textures.c draw_floor_and_ceiling.c \
-			initialize_sprite.c sprites.c draw_sprites.c initialize_data.c textures2.c export_bmp.c\
+			initialize_sprite.c sprites.c draw_sprites.c initialize_data.c \
+			textures2.c export_bmp.c utils_initialize.c utils_map_info.c \
+			utils_map.c utils_ray.c utils_color_info.c utils_color_info2.c \
+			utils_resolution_info.c utils_sprite.c \
 
 LIB	 	=	$(subst .c,.o, $(SRC))
 SRC2	=	$(addprefix mandatory_files/,$(SRC))	

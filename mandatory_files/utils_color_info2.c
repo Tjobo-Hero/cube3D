@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   utils_color_info2.c                                :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
+/*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/22 15:52:28 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 16:13:36 by vancitters    ########   odam.nl         */
+/*   Created: 2020/04/14 13:58:24 by vancitters    #+#    #+#                 */
+/*   Updated: 2020/04/14 13:58:35 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
 
-int		main(int argc, char **argv)
+int		check_double_color_ceiling(t_list *map)
 {
-	t_list	map;
-	t_vars	t;
-
-	t.map = &map;
-	write(1, ">>>CHECKING MAP & INFO<<<\n", 27);
-	if (all_map_functions(&map, argc, argv))
-	{
-		write(1, ">>>CHECK INPUT<<<\n", 19);
-		return (-1);
-	}
-	draw_map(&t);
-	maze(&map, &t);
+	map->comma = 0;
+	if (map->c_color_red > -1 || map->c_color_green > -1
+		|| map->c_color_blue > -1)
+		return (put_str(">>>DOUBLE COLOR PATH CEILING<<<\n", 1));
 	return (0);
 }

@@ -6,43 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/21 11:31:23 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 11:37:08 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 12:59:58 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
-
-void	draw_ray(float ray_angle, t_vars *t)
-{
-	t_ray_data	r;
-
-	r.ray_dir = ray_angle;
-	r.x_dir = sin(r.ray_dir);
-	r.y_dir = cos(r.ray_dir);
-	find_wall(t, &r);
-}
-
-void	shoot_rays(t_vars *t)
-{
-	float	start;
-	float	ray;
-	float	increment;
-
-	increment = 2.0 / t->res3d_w;
-	start = -1;
-	t->x_count = 0;
-	while (start <= 1)
-	{
-		ray = t->mid_ray - atan(start / t->mid_line);
-		if (ray > TWOPI)
-			ray -= TWOPI;
-		else if (ray < 0)
-			ray += TWOPI;
-		draw_ray(ray, t);
-		start += increment;
-		t->x_count++;
-	}
-}
 
 void	rotate_player(float rot, t_vars *t)
 {
@@ -106,13 +74,6 @@ int		move(t_vars *t)
 	return (1);
 }
 
-int		leave_game(t_vars *t)
-{
-	mlx_destroy_window(t->mlx2, t->win2);
-	exit_program(t);
-	return (0);
-}
-
 void	maze(t_list *map, t_vars *t)
 {
 	t_texture_no	no;
@@ -144,4 +105,3 @@ void	maze(t_list *map, t_vars *t)
 	mlx_loop_hook(t->mlx2, move, t);
 	mlx_loop(t->mlx2);
 }
-

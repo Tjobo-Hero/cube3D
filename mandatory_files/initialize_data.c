@@ -6,7 +6,7 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/02 19:51:19 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/10 11:31:57 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 14:37:25 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int		resolution_check(t_vars *t, t_list *map)
 			write(1, ">>> MAX BPM WIDTH IS 16384---", 28);
 			return (1);
 		}
-		if (t->res3d_h > 4000 || t->res3d_h > 4000)
+		if (t->res3d_h > 2000 || t->res3d_h > 2000)
 		{
-			write(1, ">>> GRAB A CUP OF COFFEE, BMP IN THE MAKE <<<\n", 45);
+			write(1, ">>>GRAB A CUP OF COFFEE, BMP IN THE MAKE<<<\n", 45);
 		}
 	}
 	if (t->res3d_w < 25)

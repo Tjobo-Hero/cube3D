@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:58:03 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 11:06:13 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 16:32:02 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,15 @@ typedef struct		s_sprite
 	int				height_text;
 	int				y_count;
 	float			text_step;
+	float			ray_start;
+	float			sp_start;
+	float			sp_step;
+	float			ray_step;
+	float			ray;
+	float			i;
+	int				img_h;
+	int				h_res_h;
+	int				h1;
 }					t_sprite;
 
 typedef	struct		s_vars
@@ -231,9 +240,8 @@ typedef	struct		s_vars
 	float			crab;
 }					t_vars;
 
-int		main(int argc, char **argv);
+int					main(int argc, char **argv);
 
-// Functions GET NEXT LINE
 int					get_next_line(int fd, char **line);
 size_t				ft_strlen(const char *s);
 char				*ft_strjoin(char const *s1, char const *s2);
@@ -241,53 +249,64 @@ char				*ft_strdup(char *s1);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 char				*ft_strchr(const char *s, int c);
 
-// Function clear struct
 void				clear_struct(t_list *map);
 
-// Main function getting map
 int					all_map_functions(t_list *map, int argc, char **argv);
 
-// Functions getting top map data
 int					get_map_info(char *line, t_list *map);
 int					get_color(char *line, t_list *map);
 int					convert_color(char *line, int *i, t_list *map);
+int					check_character(t_list *map, char c);
 int					get_resolution(char *line, t_list *map);
 int					get_texture(char *line, t_list *map, char c);
 
-// Functions getting bottom map data
 int					get_map(char *line, t_list *map);
 int					check_if_valid_map(t_list *map);
 char				*ft_strjoin_cube(char *s1, char *s2);
 int					ft_strlen_and_line_check(int i, t_list *map);
 
-// Functions checking if valid map
 int					check_if_valid_info(t_list *map);
 void				put_color_to_hex(t_list *map);
 int					check_rgb(t_list *map);
 int					check_2d_array(t_list *map);
 
-//FUNCTIONS FOR RAYCASTING
 void				find_wall(t_vars *t, t_ray_data *r);
 
-// Drawing Labyrint
 void				maze(t_list *map, t_vars *t);
 void				draw_map(t_vars *t);
 
-//Drawing 3D
 void				main_world(t_vars *t, t_ray_data *r);
 void				my_mlx_pixel_put3d(t_vars *t, int x, int y, int color);
 
-// UTILS
 void				set_player_direction(t_vars *t, char c);
 void				screen_cleaner(t_vars *t);
 int					exit_program(t_vars *t);
 void				set_tile_width_and_height(t_vars *t);
 int					put_str(char *str, int num);
+char				**free_willy(char **newstr, int i_n);
+void				convert_2d_array(t_list *map);
+void				find_step(t_vars *t, t_ray_data *r);
+char				*convert_texture(char *line);
+int					check_end_line(char *line, int *i);
+int					check_character_info(char *line, t_list *map);
+void				skip_beginning(char **line, t_list *map);
+int					check_double_path(t_list *map, char c);
+int					convert_color(char *line, int *i, t_list *map);
+int					leave_game(t_vars *t);
+void				shoot_rays(t_vars *t);
+void				draw_ray(float ray_angle, t_vars *t);
+int					check_double_color_ceiling(t_list *map);
+int					check_double_color_floor(t_list *map);
+int					fill_floor_color(char *line, t_list *map, int *i);
+int					fill_ceiling_color(char *line, t_list *map, int *i);
+int					check_color_value_ceiling(t_list *map);
+int					check_color_value_floor(t_list *map);
+int					convert_res_height(char **line, t_list *map);
+int					convert_res_width(char **line, t_list *map);
+void				hit_sprite_x2(t_vars *t, t_ray_data *r);
 
-//BMP
 void				make_bmp(char *name, char *addr, int width, int height);
 
-//Textures
 void				texture_north(t_vars *t, t_ray_data *r);
 void				texture_south(t_vars *t, t_ray_data *r);
 void				texture_east(t_vars *t, t_ray_data *r);
@@ -298,17 +317,14 @@ void				texture_east2(t_vars *t);
 void				texture_west2(t_vars *t);
 int					initialize_textures(t_vars *t);
 
-//Sprites
 int					initialize_sprites(t_vars *t);
 void				get_sprite_pos(t_vars *t, t_ray_data *r);
 void				draw_sprites(t_vars *t);
 int					initialize_data(t_vars *t, t_list *map);
 void				init_angles(t_vars *t, t_ray_data *r);
 
-// Floor and Ceiling
 void				draw_floor_and_ceiling(t_vars *t, int y_count, int x_count);
 
-//move player:
 void				move_crab(t_vars *t, float move);
 void				move_player(t_vars *t, float move);
 

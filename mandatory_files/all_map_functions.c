@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/09 10:59:39 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/13 15:15:53 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 12:54:02 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,6 @@ int		all_map_functions(t_list *map, int argc, char **argv)
 		write(1, ">>>CHECK CONVERT_MAP<<<\n", 25);
 		return (1);
 	}
+	free(map->map_str);
 	return (0);
 }

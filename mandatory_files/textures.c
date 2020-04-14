@@ -6,7 +6,7 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/18 11:58:57 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/08 10:38:44 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 12:29:26 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,4 +115,3 @@ void	texture_west(t_vars *t, t_ray_data *r)
 	}
 	texture_west2(t);
 }
-

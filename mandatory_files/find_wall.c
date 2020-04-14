@@ -6,26 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 13:33:10 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/13 15:44:46 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 12:21:06 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
-
-void	find_step(t_vars *t, t_ray_data *r)
-{
-	r->map_x = t->x;
-	r->map_y = t->y;
-	if (r->x_dir < 0)
-		r->step_x = -1;
-	else
-		r->step_x = 1;
-	if (r->y_dir < 0)
-		r->step_y = -1;
-	else
-		r->step_y = 1;
-	t->sp->count = -1;
-}
 
 void	find_dist(t_vars *t, t_ray_data *r)
 {

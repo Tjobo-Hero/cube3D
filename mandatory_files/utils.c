@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/09 11:26:45 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/13 15:44:23 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 12:40:43 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,37 +25,6 @@ int		put_str(char *str, int num)
 	return (num);
 }
 
-void	set_player_direction(t_vars *t, char c)
-{
-	if (c == 'N')
-		t->mid_ray = M_PI;
-	else if (c == 'S')
-		t->mid_ray = 0;
-	else if (c == 'E')
-		t->mid_ray = M_PI / 2;
-	else if (c == 'W')
-		t->mid_ray = M_PI * 1.5;
-}
-
-void	screen_cleaner(t_vars *t)
-{
-	int x;
-	int y;
-
-	x = 0;
-	y = 0;
-	while (x < t->res3d_w)
-	{
-		while (y < t->res3d_h)
-		{
-			my_mlx_pixel_put3d(t, x, y, 0x0000FF00);
-			y++;
-		}
-		y = 0;
-		x++;
-	}
-}
-
 int		exit_program(t_vars *t)
 {
 	int i;
@@ -72,42 +41,20 @@ int		exit_program(t_vars *t)
 	return (-1);
 }
 
-void		set_tile_width_and_height(t_vars *t)
+char	**free_willy(char **newstr, int i_n)
 {
-	t->res3d_w = t->map->res_w;
-	t->res3d_h = t->map->res_h;
-}
-
-void	draw_map(t_vars *t)
-{
-	int x;
-	int y;
-
-	y = 0;
-	while (y < t->map->row_count)
+	while (newstr)
 	{
-		x = 0;
-		while (t->map->map_2d[y][x] != '\0')
-		{
-			if (t->map->map_2d[y][x] == 'N' || t->map->map_2d[y][x] == 'S' ||
-			t->map->map_2d[y][x] == 'E' || t->map->map_2d[y][x] == 'W')
-			{
-				set_player_direction(t, t->map->map_2d[y][x]);
-				t->x = x + 0.5;
-				t->y = y + 0.5;
-			}
-			x++;
-		}
-		y++;
+		i_n--;
+		free(newstr[i_n]);
 	}
+	free(newstr);
+	return (NULL);
 }
 
-void	init_angles(t_vars *t, t_ray_data *r)
+int		leave_game(t_vars *t)
 {
-	t->sp->sp_angle_l = r->ray_dir + 0.5 * M_PI;
-	if (t->sp->sp_angle_l > 2 * M_PI)
-		t->sp->sp_angle_l -= 2 * M_PI;
-	t->sp->sp_angle_r = r->ray_dir - 0.5 * M_PI;
-	if (t->sp->sp_angle_r < 0)
-		t->sp->sp_angle_r += 2 * M_PI;
+	mlx_destroy_window(t->mlx2, t->win2);
+	exit_program(t);
+	return (0);
 }

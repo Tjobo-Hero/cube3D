@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   check_if_valid_map->c                               :+:    :+:            */
+/*   check_if_valid_info.c                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/03 15:58:33 by tvan-cit       #+#    #+#                */
-/*   Updated: 2020/02/07 17:01:11 by tvan-cit      ########   odam.nl         */
+/*   Created: 2020/02/03 15:58:33 by tvan-cit      #+#    #+#                 */
+/*   Updated: 2020/04/14 15:49:31 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		check_if_valid_info(t_list *map)
 	|| !map->sprite_texture)
 		return (put_str(">>>MISSING TEXTURE<<<\n", 1));
 	if (map->res_h < 20 || map->res_w < 20 || !map->res_h || !map->res_w)
-		return (put_str(">>>RESOLUTION ERROR<<<\n", 1));
+		return (put_str(">>>RESOLUTION ERROR, KEEP IT ABOVE 20<<<\n", 1));
 	if (check_rgb(map))
 		return (put_str(">>>WRONG RGB COLOR<<<\n", 1));
 	put_color_to_hex(map);
