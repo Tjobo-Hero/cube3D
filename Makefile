@@ -6,7 +6,7 @@
 #    By: tvan-cit <tvan-cit@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/22 15:33:02 by tvan-cit      #+#    #+#                  #
-#    Updated: 2020/04/14 16:11:44 by vancitters    ########   odam.nl          #
+#    Updated: 2020/04/14 19:52:00 by vancitters    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,30 +21,30 @@ SRC		= 	main.c get_next_line.c get_next_line_utils.c get_map_info.c \
 			initialize_sprite.c sprites.c draw_sprites.c initialize_data.c \
 			textures2.c export_bmp.c utils_initialize.c utils_map_info.c \
 			utils_map.c utils_ray.c utils_color_info.c utils_color_info2.c \
-			utils_resolution_info.c utils_sprite.c \
+			utils_resolution_info.c utils_sprite.c utils_player_move.c \
 
 LIB	 	=	$(subst .c,.o, $(SRC))
-SRC2	=	$(addprefix mandatory_files/,$(SRC))	
+SRC2	=	$(addprefix mandatory_files/,$(SRC))
 
-CC = gcc -O3 -Wall -Werror -Wextra -std=gnu99 -I minilibx -L minilibx -lmlx -framework OpenGL -framework AppKit -g -o
+CC = 		gcc -O3 -Wall -Werror -Wextra -std=gnu99 -I minilibx -L minilibx \
+			-lmlx -framework OpenGL -framework AppKit -o \
 
-all: $(NAME)
+all: 		$(NAME)
 
-#$(MLX):
-#	make -C minilibx
-#	cp -r minilibx/$(MLX) .
+$(MLX):
+			make -C minilibx
+			cp -r minilibx/$(MLX) .
 
 $(NAME): $(MLX)
 	$(CC) $(NAME) $(SRC2)
 
 clean:
-	#make -C minilibx clean
-	/bin/rm -f $(LIB)
-	#/bin/rm -f $(MLX)
-	/bin/rm -f screenshot.bmp
-	
+			make -C minilibx clean
+			/bin/rm -f $(LIB)
+			/bin/rm -f $(MLX)
+			/bin/rm -f screenshot.bmp
 
 fclean: clean
-	/bin/rm -f $(NAME)
+			/bin/rm -f $(NAME)
 
 re: fclean all

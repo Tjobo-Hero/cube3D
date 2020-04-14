@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:30:42 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 11:53:44 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 19:36:32 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,6 @@ int		check_2d_array(t_list *map)
 		y++;
 	}
 	if (map->n_count != 1)
-		return (put_str(">>>NO STARTING POINT\n", 1));
+		return (put_str(">>>NO STARTING POINT<<<\n", 1));
 	return (0);
 }

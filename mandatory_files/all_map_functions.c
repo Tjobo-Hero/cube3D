@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/09 10:59:39 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 12:54:02 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 19:38:35 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +117,9 @@ int		all_map_functions(t_list *map, int argc, char **argv)
 	if (read_map(map, argv))
 		return (1);
 	if (check_if_valid_info(map))
-		return (put_str(">>>CHECK IF_VALID_INFO<<<\n", 1));
+		return (put_str(">>>INFO NOT VALID<<<\n", 1));
 	if (check_if_valid_map(map))
-	{
-		write(1, ">>>CHECK CONVERT_MAP<<<\n", 25);
-		return (1);
-	}
+		return (put_str(">>>MAP NOT VALID<<<\n", 1));
 	free(map->map_str);
 	return (0);
 }

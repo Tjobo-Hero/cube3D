@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:58:03 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 16:32:02 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 19:43:53 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,6 +304,7 @@ int					check_color_value_floor(t_list *map);
 int					convert_res_height(char **line, t_list *map);
 int					convert_res_width(char **line, t_list *map);
 void				hit_sprite_x2(t_vars *t, t_ray_data *r);
+void				rotate_player(float rot, t_vars *t);
 
 void				make_bmp(char *name, char *addr, int width, int height);
 

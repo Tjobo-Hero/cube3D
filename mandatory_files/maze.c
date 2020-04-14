@@ -6,22 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/21 11:31:23 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 12:59:58 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 19:44:52 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
-
-void	rotate_player(float rot, t_vars *t)
-{
-	t->mid_ray += rot;
-	t->mid_ray_x = sin(t->mid_ray);
-	t->mid_ray_y = cos(t->mid_ray);
-	if (t->mid_ray > TWOPI)
-		t->mid_ray -= TWOPI;
-	else if (t->mid_ray < 0)
-		t->mid_ray += TWOPI;
-}
 
 int		lego(int key, t_vars *t)
 {
@@ -74,7 +63,7 @@ int		move(t_vars *t)
 	return (1);
 }
 
-void	maze(t_list *map, t_vars *t)
+void	initialize_game_struct(t_vars *t)
 {
 	t_texture_no	no;
 	t_texture_so	so;
@@ -87,6 +76,11 @@ void	maze(t_list *map, t_vars *t)
 	t->so = &so;
 	t->ea = &ea;
 	t->sp = &sp;
+}
+
+void	maze(t_list *map, t_vars *t)
+{
+	initialize_game_struct(t);
 	if (initialize_data(t, map))
 	{
 		write(1, ">>>INITIALIZE ERROR <<<\n", 25);

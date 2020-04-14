@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   utils_player_move.c                                :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
+/*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/22 15:52:28 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 19:39:05 by vancitters    ########   odam.nl         */
+/*   Created: 2020/04/14 19:41:12 by vancitters    #+#    #+#                 */
+/*   Updated: 2020/04/14 19:43:35 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3D.h"
 
-int		main(int argc, char **argv)
+void	rotate_player(float rot, t_vars *t)
 {
-	t_list	map;
-	t_vars	t;
-
-	t.map = &map;
-	write(1, ">>>CHECKING MAP & INFO<<<\n", 27);
-	if (all_map_functions(&map, argc, argv))
-		return (-1);
-	draw_map(&t);
-	maze(&map, &t);
-	return (0);
+	t->mid_ray += rot;
+	t->mid_ray_x = sin(t->mid_ray);
+	t->mid_ray_y = cos(t->mid_ray);
+	if (t->mid_ray > TWOPI)
+		t->mid_ray -= TWOPI;
+	else if (t->mid_ray < 0)
+		t->mid_ray += TWOPI;
 }
