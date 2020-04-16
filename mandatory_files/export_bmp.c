@@ -6,11 +6,11 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/04 10:30:42 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/09 08:15:52 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:28:16 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 void	header_bmp(int fd, int width, int height)
 {

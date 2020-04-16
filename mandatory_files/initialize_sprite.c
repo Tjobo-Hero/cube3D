@@ -6,11 +6,11 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/23 11:02:35 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/14 16:13:05 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:28:37 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		initialize_sprites(t_vars *t)
 {

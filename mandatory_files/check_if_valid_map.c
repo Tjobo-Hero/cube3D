@@ -6,11 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 11:23:51 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 16:41:14 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:30:22 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 char	*ft_strjoin_cube(char *s1, char *s2)
 {

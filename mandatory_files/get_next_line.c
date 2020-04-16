@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/18 13:28:24 by tim            #+#    #+#                */
-/*   Updated: 2020/03/18 13:28:26 by tim           ########   odam.nl         */
+/*   Created: 2020/03/18 13:28:24 by tim           #+#    #+#                 */
+/*   Updated: 2020/04/14 21:28:31 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		ft_make_line(char *str, char **line, char *end)
 {

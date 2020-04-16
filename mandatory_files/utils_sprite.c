@@ -6,11 +6,11 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/14 16:09:41 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/14 16:09:58 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:31:25 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 void	hit_sprite_x2(t_vars *t, t_ray_data *r)
 {

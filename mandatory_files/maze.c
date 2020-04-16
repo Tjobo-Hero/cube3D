@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/21 11:31:23 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 19:44:52 by vancitters    ########   odam.nl         */
+/*   Created: 2020/02/21 11:31:23 by tvan-cit       #+#    #+#                */
+/*   Updated: 2020/04/16 19:32:48 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		lego(int key, t_vars *t)
 {
@@ -49,7 +49,6 @@ int		press(int key, t_vars *t)
 int		move(t_vars *t)
 {
 	t->addr_count++;
-	screen_cleaner(t);
 	rotate_player(t->turn, t);
 	move_player(t, t->move);
 	move_crab(t, t->crab);

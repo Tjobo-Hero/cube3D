@@ -6,12 +6,12 @@
 #    By: tvan-cit <tvan-cit@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/22 15:33:02 by tvan-cit      #+#    #+#                  #
-#    Updated: 2020/04/14 19:52:00 by vancitters    ########   odam.nl          #
+#    Updated: 2020/04/14 19:54:51 by vancitters    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 	= cub3D
-MLX 	= libmlx.dylib
+NAME 	= 	cub3D
+MLX 	= 	libmlx.dylib
 
 SRC		= 	main.c get_next_line.c get_next_line_utils.c get_map_info.c \
 			check_if_valid_info.c get_map.c check_if_valid_map.c \
@@ -29,7 +29,7 @@ SRC2	=	$(addprefix mandatory_files/,$(SRC))
 CC = 		gcc -O3 -Wall -Werror -Wextra -std=gnu99 -I minilibx -L minilibx \
 			-lmlx -framework OpenGL -framework AppKit -o \
 
-all: 		$(NAME)
+all: $(NAME)
 
 $(MLX):
 			make -C minilibx

@@ -6,11 +6,11 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/02 19:51:19 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/14 14:37:25 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:28:34 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		initialize_mlx(t_vars *t)
 {

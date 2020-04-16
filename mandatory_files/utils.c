@@ -6,11 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/09 11:26:45 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 12:40:43 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:31:28 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		put_str(char *str, int num)
 {

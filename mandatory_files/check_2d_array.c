@@ -6,11 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:30:42 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 19:36:32 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:30:19 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		check_firstline(t_list *map, int y)
 {

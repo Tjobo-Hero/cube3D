@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   cube3D.h                                           :+:    :+:            */
+/*   cube.h                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:58:03 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 19:43:53 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/16 19:35:37 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#ifndef CUBE_H
+# define CUBE_H
 # define LOOK_LEFT 123
 # define LOOK_RIGHT 124
 # define MOVE_UP 13
@@ -173,8 +173,8 @@ typedef struct		s_sprite
 	void			*mlx;
 	int				img_width;
 	int				img_height;
-	float			pos_wall[10];
-	float			eucl_dist[10];
+	float			pos_wall[255];
+	float			eucl_dist[255];
 	float			step;
 	int				count;
 	float			sp_angle_l;

@@ -6,11 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 14:54:53 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 14:30:36 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:28:22 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		get_texture(char *line, t_list *map, char c)
 {

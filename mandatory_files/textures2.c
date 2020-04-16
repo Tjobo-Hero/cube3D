@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/03 16:44:36 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/08 10:39:33 by vancitters    ########   odam.nl         */
+/*   Created: 2020/04/03 16:44:36 by vancitters     #+#    #+#                */
+/*   Updated: 2020/04/16 19:20:47 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 void	texture_north2(t_vars *t)
 {

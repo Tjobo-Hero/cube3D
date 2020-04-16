@@ -6,11 +6,11 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/18 13:28:17 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/10 13:38:21 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:28:28 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 size_t	ft_strlen(const char *s)
 {

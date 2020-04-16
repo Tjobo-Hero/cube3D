@@ -6,11 +6,11 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/14 13:58:24 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/14 13:58:35 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:31:02 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		check_double_color_ceiling(t_list *map)
 {

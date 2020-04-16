@@ -6,11 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 13:33:10 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 12:21:06 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:28:19 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 void	find_dist(t_vars *t, t_ray_data *r)
 {

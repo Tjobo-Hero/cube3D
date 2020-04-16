@@ -6,11 +6,11 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/14 19:41:12 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/14 19:43:35 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:31:15 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 void	rotate_player(float rot, t_vars *t)
 {

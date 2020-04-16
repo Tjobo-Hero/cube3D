@@ -6,11 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/12 15:08:57 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 12:29:32 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:30:45 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 void	move_player(t_vars *t, float move)
 {

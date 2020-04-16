@@ -5,7 +5,7 @@ EA ./textures/wood.xpm
 WE ./textures/texture_west.xpm
 S ./textures/sprite_1.xpm
       
-R   500 500          
+R  1500 1200
 F 82,  24 , 79              
 C   52 ,   224, 255                
 

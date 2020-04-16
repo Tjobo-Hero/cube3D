@@ -6,11 +6,11 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/14 14:24:50 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/14 14:26:47 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:31:21 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		convert_res_width(char **line, t_list *map)
 {

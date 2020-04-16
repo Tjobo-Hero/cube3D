@@ -6,11 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/04 11:33:22 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/10 17:17:55 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:28:25 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 void	clear_struct(t_list *map)
 {

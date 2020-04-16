@@ -6,11 +6,11 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/18 11:58:57 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/14 12:29:26 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:30:52 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 void	texture_north(t_vars *t, t_ray_data *r)
 {

@@ -6,11 +6,11 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/14 13:55:42 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/14 13:59:05 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:30:58 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		check_color_value_floor(t_list *map)
 {

@@ -6,11 +6,11 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/14 11:52:53 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/14 16:16:06 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:31:12 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		check_character(t_list *map, char c)
 {

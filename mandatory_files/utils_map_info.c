@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utils3.c                                           :+:    :+:            */
+/*   utils_map_info.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/14 12:23:16 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/14 12:27:39 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:31:09 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		check_end_line(char *line, int *i)
 {

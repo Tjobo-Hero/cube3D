@@ -6,11 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:52:28 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 19:39:05 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:28:44 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		main(int argc, char **argv)
 {

@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/23 16:35:53 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/14 16:40:13 by vancitters    ########   odam.nl         */
+/*   Created: 2020/03/23 16:35:53 by tim            #+#    #+#                */
+/*   Updated: 2020/04/16 19:21:11 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 void	draw_sprites_2(t_vars *t, char *color)
 {

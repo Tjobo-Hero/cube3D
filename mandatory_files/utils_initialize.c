@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/04/14 12:32:31 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/14 12:34:32 by vancitters    ########   odam.nl         */
+/*   Created: 2020/04/14 12:32:31 by vancitters     #+#    #+#                */
+/*   Updated: 2020/04/16 19:32:41 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 void	set_player_direction(t_vars *t, char c)
 {
@@ -22,25 +22,6 @@ void	set_player_direction(t_vars *t, char c)
 		t->mid_ray = M_PI / 2;
 	else if (c == 'W')
 		t->mid_ray = M_PI * 1.5;
-}
-
-void	screen_cleaner(t_vars *t)
-{
-	int x;
-	int y;
-
-	x = 0;
-	y = 0;
-	while (x < t->res3d_w)
-	{
-		while (y < t->res3d_h)
-		{
-			my_mlx_pixel_put3d(t, x, y, 0x0000FF00);
-			y++;
-		}
-		y = 0;
-		x++;
-	}
 }
 
 void	set_tile_width_and_height(t_vars *t)

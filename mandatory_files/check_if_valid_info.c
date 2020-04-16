@@ -6,11 +6,11 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 15:58:33 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 15:49:31 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:30:20 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 int		check_rgb(t_list *map)
 {

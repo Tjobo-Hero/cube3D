@@ -6,11 +6,11 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/23 11:44:32 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/14 16:12:45 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:30:48 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 void	hit_sprite_y(t_vars *t, t_ray_data *r, int sign1, int sign2)
 {

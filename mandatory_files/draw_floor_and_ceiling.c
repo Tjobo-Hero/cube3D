@@ -6,11 +6,11 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/21 12:53:06 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/09 11:33:00 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/14 21:30:26 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3D.h"
+#include "cube.h"
 
 void	draw_floor(t_vars *t, int y_count, int x_count)
 {
