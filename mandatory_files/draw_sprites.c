@@ -6,7 +6,7 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/23 16:35:53 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/21 14:22:39 by tim           ########   odam.nl         */
+/*   Updated: 2020/04/21 14:27:30 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ void	draw_sprites(t_vars *t)
 	{
 		color = t->sp->addr + ((t->sp->img_h + (int)(t->sp->text_step *
 		t->sp->y_count)) * t->sp->line_length + t->sp->h1);
-		if (t->x_count == 256)
-		{
-			printf(" get-1-2-3 %d -- -- %d \n", t->sp->img_h + (int)(t->sp->text_step * t->sp->y_count), t->sp->h1 / (t->bits_per_pixel2 / 8));
-			printf("pixelput: %d -- %d\n", t->x_count, t->sp->h_res_h + t->sp->y_count);
-		}
+		// if (t->x_count == 256)
+		// {
+		// 	printf(" get-1-2-3 %d -- -- %d \n", t->sp->img_h + (int)(t->sp->text_step * t->sp->y_count), t->sp->h1 / (t->bits_per_pixel2 / 8));
+		// 	printf("pixelput: %d -- %d\n", t->x_count, t->sp->h_res_h + t->sp->y_count);
+		// }
 		if (*(unsigned int *)color != 0x00000000 && t->sp->h_res_h +
 		t->sp->y_count < t->res3d_h)
 			my_mlx_pixel_put3d(t, t->x_count, t->sp->h_res_h + t->sp->y_count,

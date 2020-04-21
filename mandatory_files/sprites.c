@@ -6,7 +6,7 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/23 11:44:32 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/21 13:48:21 by tim           ########   odam.nl         */
+/*   Updated: 2020/04/21 14:36:35 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	hit_sprite_x(t_vars *t, t_ray_data *r, float sign1, int sign2)
 		t->sp->sp_step = t->sp->step / tan(t->sp->sp_angle_r);
 	hit_sprite_x2(t, r);
 	if (t->sp->ray >= 0.0 && t->sp->ray < 0.5)
-		t->sp->pos_wall[t->sp->count] = 0.5 + (fabs(t->sp->ray - 0.5)) // was een - bij 0.5 +
+		t->sp->pos_wall[t->sp->count] = 0.5 - (fabs(t->sp->ray - 0.5))
 		/ cos(t->sp->sp_angle_l);
 	else if ((t->sp->ray >= 0.5 && t->sp->ray < 1.0) && sign2 == 0)
 		t->sp->pos_wall[t->sp->count] = (t->sp->ray - 0.5)
@@ -72,7 +72,7 @@ void	findwall_sprite_x(t_vars *t, t_ray_data *r)
 	{
 		if (r->ray_dir >= ONEPFPI && r->ray_dir < TWOPI)
 		{
-			t->sp->pos_wall[t->sp->count] = (1.0 - r->pos_wall);
+			t->sp->pos_wall[t->sp->count] = (1 - r->pos_wall);
 			hit_sprite_x(t, r, -0.5, 0);
 		}
 		else

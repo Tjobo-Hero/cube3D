@@ -3,21 +3,20 @@ SO ./textures/texture_south.xpm
 NO ./textures/eagle.xpm
 EA ./textures/wood.xpm
 WE ./textures/texture_west.xpm
-S ./textures/sprite_2.xpm
+S ./textures/sprite_1.xpm
       
-R  800 502
+R 1279 799
 F 82,  24 , 79              
 C   52 ,   224, 255                
 
 
 
-111111111111
-100000000001
-100000000001
-100020000001
-1002E2000001
-100020000001
-100000000001
-100000000001
-111111111111
-1
+11
+121
+1221
+122111111111
+1N21
+1221
+121
+1111111111111111
+1111111111111

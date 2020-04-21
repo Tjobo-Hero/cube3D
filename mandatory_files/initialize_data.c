@@ -6,7 +6,7 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/02 19:51:19 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/14 21:28:34 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/21 14:52:49 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ int		resolution_check(t_vars *t, t_list *map)
 			return (1);
 		}
 		if (t->res3d_h > 2000 || t->res3d_h > 2000)
-		{
 			write(1, ">>>GRAB A CUP OF COFFEE, BMP IN THE MAKE<<<\n", 45);
-		}
 	}
 	if (t->res3d_w < 25)
 		t->res3d_w = 25;
