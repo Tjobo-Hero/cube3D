@@ -6,7 +6,7 @@
 #    By: tvan-cit <tvan-cit@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/22 15:33:02 by tvan-cit      #+#    #+#                  #
-#    Updated: 2020/04/14 19:54:51 by vancitters    ########   odam.nl          #
+#    Updated: 2020/04/21 11:17:53 by tim           ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,22 +26,22 @@ SRC		= 	main.c get_next_line.c get_next_line_utils.c get_map_info.c \
 LIB	 	=	$(subst .c,.o, $(SRC))
 SRC2	=	$(addprefix mandatory_files/,$(SRC))
 
-CC = 		gcc -O3 -Wall -Werror -Wextra -std=gnu99 -I minilibx -L minilibx \
+CC = 		gcc -O3 -g -Wall -Werror -Wextra -std=gnu99 -I minilibx -L minilibx \
 			-lmlx -framework OpenGL -framework AppKit -o \
 
 all: $(NAME)
 
 $(MLX):
-			make -C minilibx
-			cp -r minilibx/$(MLX) .
+			# make -C minilibx
+			# cp -r minilibx/$(MLX) .
 
 $(NAME): $(MLX)
 	$(CC) $(NAME) $(SRC2)
 
 clean:
-			make -C minilibx clean
+			# make -C minilibx clean
 			/bin/rm -f $(LIB)
-			/bin/rm -f $(MLX)
+			# /bin/rm -f $(MLX)
 			/bin/rm -f screenshot.bmp
 
 fclean: clean

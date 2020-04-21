@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/21 11:31:23 by tvan-cit       #+#    #+#                */
-/*   Updated: 2020/04/16 19:32:48 by tim           ########   odam.nl         */
+/*   Created: 2020/02/21 11:31:23 by tvan-cit      #+#    #+#                 */
+/*   Updated: 2020/04/21 12:59:42 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,22 @@ int		move(t_vars *t)
 	return (1);
 }
 
-void	initialize_game_struct(t_vars *t)
+// void	initialize_game_struct(t_vars *t)
+// {
+// 	t_texture_no	no;
+// 	t_texture_so	so;
+// 	t_texture_we	we;
+// 	t_texture_ea	ea;
+// 	t_sprite		sp;
+
+// 	t->we = &we;
+// 	t->no = &no;
+// 	t->so = &so;
+// 	t->ea = &ea;
+// 	t->sp = &sp;
+// }
+
+void	maze(t_list *map, t_vars *t)
 {
 	t_texture_no	no;
 	t_texture_so	so;
@@ -75,11 +90,7 @@ void	initialize_game_struct(t_vars *t)
 	t->so = &so;
 	t->ea = &ea;
 	t->sp = &sp;
-}
-
-void	maze(t_list *map, t_vars *t)
-{
-	initialize_game_struct(t);
+	
 	if (initialize_data(t, map))
 	{
 		write(1, ">>>INITIALIZE ERROR <<<\n", 25);

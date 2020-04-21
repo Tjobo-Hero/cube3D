@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 13:33:10 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 21:28:19 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/21 13:47:22 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	find_dist(t_vars *t, t_ray_data *r)
 	}
 	r->hit_x = fabs(r->dist_x / sin(r->ray_dir));
 	r->hit_y = fabs(r->dist_y / cos(r->ray_dir));
+	//printf("count: %d -- x: %f -- y: %f \n", t->x_count, r->hit_x, r->hit_y);
 	r->delta_x = fabs(1.0 / sin(r->ray_dir));
 	r->delta_y = fabs(1.0 / cos(r->ray_dir));
 	find_step(t, r);
@@ -49,13 +50,13 @@ void	find_eucl_and_perp_dist2(t_vars *t, t_ray_data *r)
 		r->pos_wall += 1.0;
 	if (r->ray_dir < PI)
 	{
-		if (r->ray_dir > HALFPI)
+		if (r->ray_dir >= HALFPI)
 			r->pos_wall = 1 - r->pos_wall;
 		texture_east(t, r);
 	}
 	else if (r->ray_dir >= PI)
 	{
-		if (r->ray_dir > ONEPFPI)
+		if (r->ray_dir >= ONEPFPI)
 			r->pos_wall = 1 - r->pos_wall;
 		texture_west(t, r);
 	}
@@ -75,7 +76,7 @@ void	find_eucl_and_perp_dist3(t_vars *t, t_ray_data *r)
 	}
 	else if (r->ray_dir >= HALFPI && r->ray_dir < ONEPFPI)
 	{
-		if (r->ray_dir < (1 * M_PI))
+		if (r->ray_dir < M_PI)
 			r->pos_wall = 1 - r->pos_wall;
 		texture_north(t, r);
 	}

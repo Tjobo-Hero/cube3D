@@ -6,7 +6,7 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/14 12:36:43 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/14 21:31:18 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/21 13:17:23 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	shoot_rays(t_vars *t)
 	while (start <= 1)
 	{
 		ray = t->mid_ray - atan(start / t->mid_line);
-		if (ray > TWOPI)
+		if (ray >= TWOPI)
 			ray -= TWOPI;
 		else if (ray < 0)
 			ray += TWOPI;

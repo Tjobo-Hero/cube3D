@@ -6,7 +6,7 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/23 11:44:32 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/14 21:30:48 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/21 13:48:21 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	hit_sprite_y(t_vars *t, t_ray_data *r, int sign1, int sign2)
 	(cos(r->ray_dir))) + t->sp->eucl_dist[t->sp->count];
 	t->sp->eucl_dist[t->sp->count] = t->sp->eucl_dist[t->sp->count]
 	* cos(t->mid_ray - r->ray_dir);
-	if (t->sp->ray > 0.0 && t->sp->ray < 0.5)
+	if (t->sp->ray >= 0.0 && t->sp->ray < 0.5)
 		t->sp->pos_wall[t->sp->count] = 0.5 + ((fabs(t->sp->ray - 0.5))
 		/ (sin(t->sp->sp_angle_l)) * sign2);
 	else if (t->sp->ray >= 0.5 && t->sp->ray < 1.0)
@@ -39,7 +39,7 @@ void	hit_sprite_y(t_vars *t, t_ray_data *r, int sign1, int sign2)
 void	hit_sprite_x(t_vars *t, t_ray_data *r, float sign1, int sign2)
 {
 	t->sp->ray_start = t->sp->pos_wall[t->sp->count];
-	if (sign1 == -0.5 && (r->ray_dir > 1.5 * M_PI && r->ray_dir <= 2.0 * M_PI))
+	if (sign1 == -0.5 && (r->ray_dir >= ONEPFPI && r->ray_dir < TWOPI))
 		t->sp->sp_start = 0.5 + sign1 / fabs(tan(t->sp->sp_angle_r));
 	else
 		t->sp->sp_start = 0.5 + sign1 / fabs(tan(t->sp->sp_angle_l));
@@ -49,8 +49,8 @@ void	hit_sprite_x(t_vars *t, t_ray_data *r, float sign1, int sign2)
 	else
 		t->sp->sp_step = t->sp->step / tan(t->sp->sp_angle_r);
 	hit_sprite_x2(t, r);
-	if (t->sp->ray > 0.0 && t->sp->ray < 0.5)
-		t->sp->pos_wall[t->sp->count] = 0.5 - (fabs(t->sp->ray - 0.5))
+	if (t->sp->ray >= 0.0 && t->sp->ray < 0.5)
+		t->sp->pos_wall[t->sp->count] = 0.5 + (fabs(t->sp->ray - 0.5)) // was een - bij 0.5 +
 		/ cos(t->sp->sp_angle_l);
 	else if ((t->sp->ray >= 0.5 && t->sp->ray < 1.0) && sign2 == 0)
 		t->sp->pos_wall[t->sp->count] = (t->sp->ray - 0.5)
@@ -70,9 +70,9 @@ void	findwall_sprite_x(t_vars *t, t_ray_data *r)
 	t->sp->pos_wall[t->sp->count] = r->pos_wall;
 	if (r->step_x == -1)
 	{
-		if (r->ray_dir > 1.5 * M_PI && r->ray_dir <= 2 * M_PI)
+		if (r->ray_dir >= ONEPFPI && r->ray_dir < TWOPI)
 		{
-			t->sp->pos_wall[t->sp->count] = (1 - r->pos_wall);
+			t->sp->pos_wall[t->sp->count] = (1.0 - r->pos_wall);
 			hit_sprite_x(t, r, -0.5, 0);
 		}
 		else
@@ -80,9 +80,9 @@ void	findwall_sprite_x(t_vars *t, t_ray_data *r)
 	}
 	if (r->step_x == 1)
 	{
-		if (r->ray_dir < 0.5 * M_PI)
+		if (r->ray_dir < HALFPI)
 		{
-			t->sp->pos_wall[t->sp->count] = (1 - r->pos_wall);
+			t->sp->pos_wall[t->sp->count] = (1.0 - r->pos_wall);
 			hit_sprite_x(t, r, -0.5, 1);
 		}
 		else
@@ -97,7 +97,7 @@ void	findwall_sprite_y(t_vars *t, t_ray_data *r)
 	t->sp->pos_wall[t->sp->count] = r->pos_wall;
 	if (r->step_y == -1)
 	{
-		if (r->ray_dir > 1 * M_PI)
+		if (r->ray_dir >= PI)
 		{
 			t->sp->pos_wall[t->sp->count] = (1 - r->pos_wall);
 			hit_sprite_y(t, r, -1, 1);
@@ -107,7 +107,7 @@ void	findwall_sprite_y(t_vars *t, t_ray_data *r)
 	}
 	if (r->step_y == 1)
 	{
-		if (r->ray_dir < 0.5 * M_PI)
+		if (r->ray_dir < HALFPI)
 		{
 			t->sp->pos_wall[t->sp->count] = (1 - r->pos_wall);
 			hit_sprite_y(t, r, -1, -1);
