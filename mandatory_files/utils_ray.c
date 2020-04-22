@@ -6,7 +6,7 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/14 12:36:43 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/21 13:17:23 by tim           ########   odam.nl         */
+/*   Updated: 2020/04/21 19:40:37 by tim           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	shoot_rays(t_vars *t)
 	increment = 2.0 / t->res3d_w;
 	start = -1;
 	t->x_count = 0;
-	while (start <= 1)
+	while (t->x_count < t->res3d_w)
 	{
 		ray = t->mid_ray - atan(start / t->mid_line);
 		if (ray >= TWOPI)
