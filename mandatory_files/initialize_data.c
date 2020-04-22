@@ -6,7 +6,7 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/02 19:51:19 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/21 14:52:49 by tim           ########   odam.nl         */
+/*   Updated: 2020/04/22 12:03:17 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int		initialize_mlx(t_vars *t)
 	&t->line_length2, &t->endian2);
 	t->win2 = mlx_new_window(t->mlx2, t->res3d_w, t->res3d_h,
 	"WE'RE GONNA RULE THE WORLD, DON'T YOU KNOW, DON'T YOU KNOW");
+	if (!t->mlx2 || !t->img1 || !t->img2 || !t->addr1 || !t->addr2 || !t->win2)
+		return (put_str(">>>INITIALIZE MLX ERROR<<<", 1));
 	return (0);
 }
 
@@ -63,17 +65,13 @@ int		initialize_data(t_vars *t, t_list *map)
 {
 	set_tile_width_and_height(t);
 	mlx_get_screen_size(t->mlx2, &t->screen_x, &t->screen_y);
+	if (!t->screen_x || !t->screen_y)
+		return (put_str(">>>MLX GET_SCREEN_SIZE Error<<<", 1));
 	initialize_struct_data(t);
 	if (resolution_check(t, map))
-	{
-		printf("Resolution\n");
-		return (1);
-	}
+		return (put_str(">>>RESOLUTION ERROR<<<", 1));
 	if (initialize_mlx(t))
-	{
-		printf("initialize mlx\n");
-		return (1);
-	}
+		return (put_str(">>>INITIALIZE ERROR<<<", 1));
 	if (initialize_textures(t))
 		return (1);
 	if (initialize_sprites(t))

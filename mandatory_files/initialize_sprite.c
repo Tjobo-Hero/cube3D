@@ -6,7 +6,7 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/23 11:02:35 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/14 21:28:37 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/22 11:57:54 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ int		initialize_sprites(t_vars *t)
 	&t->sp->img_width, &t->sp->img_height);
 	t->sp->addr = mlx_get_data_addr(t->sp->img, &t->sp->bits_per_pixel,
 	&t->sp->line_length, &t->sp->endian);
+	if (!t->sp->mlx || !t->sp->img || !t->sp->addr)
+		return (put_str(">>>ERROR INITIALIZE SPRITE PATH<<<\n", 1));
 	return (0);
 }

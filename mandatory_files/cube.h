@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:58:03 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/16 19:35:37 by tim           ########   odam.nl         */
+/*   Updated: 2020/04/22 11:55:04 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,19 +196,19 @@ typedef struct		s_sprite
 
 typedef	struct		s_vars
 {
-	int				tile_width;
-	int				tile_height;
+	// int				tile_width;
+	// int				tile_height;
 	float			x;
 	float			y;
-	void			*img;
-	char			*addr;
-	int				bits_per_pixel;
-	int				line_length;
-	int				endian;
-	void			*mlx;
-	void			*win;
-	int				img_width;
-	int				img_height;
+	// void			*img;
+	// char			*addr;
+	// int				bits_per_pixel;
+	// int				line_length;
+	// int				endian;
+	// void			*mlx;
+	// void			*win;
+	// int				img_widthr;
+	// int				img_height;
 	float			mid_ray;
 	float			mid_ray_x;
 	float			mid_ray_y;
