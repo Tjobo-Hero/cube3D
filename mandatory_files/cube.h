@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:58:03 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/22 11:55:04 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/23 19:53:31 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # define PI 3.14159265359
 # define ONEPFPI 4.71238898038
 # define TWOPI 6.28318530718
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
 
 # include <mlx.h>
 # include <unistd.h>
@@ -33,8 +36,6 @@
 # include <string.h>
 # include <limits.h>
 # include <math.h>
-
-# define BUFFER_SIZE 30
 
 typedef struct		s_list
 {
@@ -243,12 +244,13 @@ typedef	struct		s_vars
 int					main(int argc, char **argv);
 
 int					get_next_line(int fd, char **line);
-size_t				ft_strlen(const char *s);
-char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strdup(char *s1);
+int					ft_strlen(const char *str);
+char				*ft_strjoin_gnl(char const *s1, char const *s2);
+char				*ft_strdup(const char *src);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 char				*ft_strchr(const char *s, int c);
 
+void				initialize_ray_struct(t_ray_data *r);
 void				clear_struct(t_list *map);
 
 int					all_map_functions(t_list *map, int argc, char **argv);
@@ -286,7 +288,6 @@ int					put_str(char *str, int num);
 char				**free_willy(char **newstr, int i_n);
 void				convert_2d_array(t_list *map);
 void				find_step(t_vars *t, t_ray_data *r);
-char				*convert_texture(char *line);
 int					check_end_line(char *line, int *i);
 int					check_character_info(char *line, t_list *map);
 void				skip_beginning(char **line, t_list *map);

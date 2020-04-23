@@ -6,7 +6,7 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/18 11:58:57 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/14 21:30:52 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/23 15:15:30 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	texture_north(t_vars *t, t_ray_data *r)
 	t->no->h1 = (int)(r->pos_wall * t->no->img_width) *
 	(t->no->bits_per_pixel / 8);
 	t->no->half_res_h = (t->res3d_h / 2);
+	if (t->res3d_h % 2 != 0)
+		t->no->pix_height++;
 	while (t->no->y_count <= (int)t->no->pix_height)
 	{
 		my_mlx_pixel_put3d(t, t->x_count, t->no->half_res_h + t->no->y_count,

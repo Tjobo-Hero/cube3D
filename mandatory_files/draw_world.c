@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/12 11:55:21 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/23 14:58:53 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/23 16:27:10 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void		check_x_and_y(t_vars *t, int x, int y)
 		y = 0;
 	if (x < 0)
 		x = 0;
-	if (x > t->res3d_w)
-		x = t->res3d_w;
-	if (y > t->res3d_h)
-		y = t->res3d_h;
+	if (x >= t->res3d_w)
+		x = t->res3d_w - 1;
+	if (y >= t->res3d_h)
+		y = t->res3d_h - 1;
 }
 
 void		my_mlx_pixel_put3d(t_vars *t, int x, int y, int color)

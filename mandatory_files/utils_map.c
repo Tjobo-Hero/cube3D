@@ -6,7 +6,7 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/14 11:52:53 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/14 21:31:12 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/23 16:02:04 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	convert_2d_array(t_list *map)
 	}
 }
 
-char	*convert_texture(char *line)
-{
-	while (*line != '.')
-		line++;
-	return (ft_strdup(line));
-}
+// char	*convert_texture(char *line)
+// {
+// 	while (*line != '.')
+// 		line++;
+// 	return (ft_strdup(line));
+// }

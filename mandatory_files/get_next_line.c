@@ -6,90 +6,80 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/18 13:28:24 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/14 21:28:31 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/23 16:56:46 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int		ft_make_line(char *str, char **line, char *end)
+int				check_eof(int ret)
 {
-	*end = '\0';
-	(*line) = ft_strdup(str);
-	if ((*line) == NULL)
-	{
-		free(str);
-		return (-1);
-	}
-	str = ft_memmove(str, (end + 1), (ft_strlen(end + 1) + 1));
-	return (1);
-}
-
-int		ft_end_of_file(char *str, char **line)
-{
-	int check;
-
-	check = 0;
-	if (str)
-		check = ft_make_line(str, line, ft_strchr(str, '\0'));
-	free(str);
-	if (check == -1)
-		return (-1);
+	if (ret == 0)
+		return (1);
 	return (0);
 }
 
-char	*ft_read_more(char *str, int *ret, int fd)
+char			*ft_newbuf(int const fd, char *buf, int *ret)
 {
-	char	*buf;
+	char	*s;
 	char	*tmp;
 
-	buf = malloc(BUFFER_SIZE + 1);
-	if (buf == 0)
-	{
-		free(str);
+	s = (char *)malloc(sizeof(*s) * (BUFFER_SIZE + 1));
+	if (!s)
 		return (0);
-	}
-	*ret = read(fd, buf, BUFFER_SIZE);
-	if (*ret < 0)
-	{
-		free(buf);
-		free(str);
+	*ret = read(fd, s, BUFFER_SIZE);
+	if (*ret == -1)
 		return (0);
-	}
-	buf[*ret] = '\0';
-	tmp = str;
-	str = ft_strjoin(str, buf);
-	free(tmp);
-	free(buf);
-	if (str == 0)
-		return (0);
-	return (str);
-}
-
-int		get_next_line(int fd, char **line)
-{
-	int			ret;
-	static char	*str;
-	int			check;
-
-	if (fd < 0 || line == NULL || BUFFER_SIZE < 1)
-		return (-1);
-	if (str == NULL)
-		str = ft_strdup("");
-	if (!str)
-		return (-1);
-	if (ft_strchr(str, '\n') != NULL)
+	if (*ret == 0 && s[*ret - 1] != '\n')
 	{
-		check = ft_make_line(str, line, ft_strchr(str, '\n'));
-		if (check == -1)
-			return (-1);
-		return (1);
+		s[*ret] = '\n';
+		s[*ret + 1] = '\0';
 	}
 	else
-		str = ft_read_more(str, &ret, fd);
-	if (str == 0)
+		s[*ret] = '\0';
+	tmp = buf;
+	buf = ft_strjoin_gnl(buf, s);
+	free(tmp);
+	free(s);
+	return (buf);
+}
+
+int				makeline(char *buf, char *ptr, char **line, int ret)
+{
+	*ptr = '\0';
+	*line = ft_strdup(buf);
+	if (!*line)
 		return (-1);
+	ft_memmove(buf, ptr + 1, ft_strlen(ptr + 1) + 1);
+	if (check_eof(ret) != 0 && buf[0] == '\0')
+		return (0);
+	return (1);
+}
+
+int				get_next_line(int fd, char **line)
+{
+	static char		*buf;
+	int				ret;
+
+	if (line == NULL || fd < 0 || BUFFER_SIZE < 1)
+		return (-1);
+	if (!buf)
+		buf = ft_strdup("");
+	ret = 1;
+	while (ret)
+	{
+		if (ft_strchr(buf, '\n') != NULL)
+			return (makeline(buf, ft_strchr(buf, '\n'), line, ret));
+		buf = ft_newbuf(fd, buf, &ret);
+		if (!buf)
+			return (-1);
+	}
 	if (ret == 0)
-		return (ft_end_of_file(str, line));
-	return (get_next_line(fd, line));
+	{
+		*line = ft_strdup(buf);
+		free(buf);
+	}
+	if (ret < 0)
+		return (-1);
+	return (ret);
 }

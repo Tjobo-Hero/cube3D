@@ -6,7 +6,7 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/14 12:36:43 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/21 19:40:37 by tim           ########   odam.nl         */
+/*   Updated: 2020/04/23 19:52:17 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	draw_ray(float ray_angle, t_vars *t)
 {
 	t_ray_data	r;
 
+	initialize_ray_struct(&r);
 	r.ray_dir = ray_angle;
 	r.x_dir = sin(r.ray_dir);
 	r.y_dir = cos(r.ray_dir);

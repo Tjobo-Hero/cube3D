@@ -6,7 +6,7 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/02 19:51:19 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/23 15:07:24 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/23 19:53:04 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,28 +61,28 @@ int		resolution_check(t_vars *t, t_list *map)
 	return (0);
 }
 
-void	initialize_ray_struct(t_vars *t)
+void	initialize_ray_struct(t_ray_data *r)
 {
-	t->r->temp_x = 0.0;
-	t->r->temp_y = 0.0;
-	t->r->ray_dir = 0.0;
-	t->r->x_dir = 0.0;
-	t->r->y_dir = 0.0;
-	t->r->delta_x = 0.0;
-	t->r->delta_y = 0.0;
-	t->r->hit_x = 0.0;
-	t->r->hit_y = 0.0;
-	t->r->dist_x = 0.0;
-	t->r->dist_y = 0.0;
-	t->r->eucl_dist = 0.0;
-	t->r->perp_dist = 0.0;
-	t->r->pos_wall = 0.0;
-	t->r->dist = 0.0;
-	t->r->step_x = 0;
-	t->r->step_y = 0;
-	t->r->map_x = 0;
-	t->r->map_y = 0;
-	t->r->side = 0;
+	r->temp_x = 0.0;
+	r->temp_y = 0.0;
+	r->ray_dir = 0.0;
+	r->x_dir = 0.0;
+	r->y_dir = 0.0;
+	r->delta_x = 0.0;
+	r->delta_y = 0.0;
+	r->hit_x = 0.0;
+	r->hit_y = 0.0;
+	r->dist_x = 0.0;
+	r->dist_y = 0.0;
+	r->eucl_dist = 0.0;
+	r->perp_dist = 0.0;
+	r->pos_wall = 0.0;
+	r->dist = 0.0;
+	r->step_x = 0;
+	r->step_y = 0;
+	r->map_x = 0;
+	r->map_y = 0;
+	r->side = 0;
 }
 
 void	initialize_texture_no(t_vars *t)
@@ -152,7 +152,6 @@ void	initialize_texture_sp(t_vars *t)
 
 void	initialize_struct_details(t_vars *t)
 {
-	initialize_ray_struct(t);
 	initialize_texture_no(t);
 	initialize_texture_so(t);
 	initialize_texture_ea(t);

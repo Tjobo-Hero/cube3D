@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/09 10:59:39 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/22 19:26:32 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/23 16:56:14 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		check_save(t_list *map, char **argv)
 {
-	size_t	i;
+	int		i;
 	char	*save;
 
 	save = "--save";
@@ -40,8 +40,8 @@ int		check_save(t_list *map, char **argv)
 
 int		check_filename(char **argv)
 {
-	size_t	i;
-	size_t	i2;
+	int		i;
+	int		i2;
 	char	*cub;
 
 	cub = ".cub";

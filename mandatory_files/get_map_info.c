@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 14:54:53 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/23 14:28:50 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/23 16:01:55 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,27 @@
 
 int		get_texture(char *line, t_list *map, char c)
 {
+	line++;
 	if (c != 's')
+		line++;
+	while (*line != '.' && *line != '\0')
 	{
-		if (!(line[2] == ' ' || line[2] == '.'))
+		if (*line != ' ')
 			return (put_str(">>>TEXTURE ERROR<<<\n", 1));
+		line++;
 	}
 	if (check_double_path(map, c))
 		return (put_str(">>>DOUBLE PATH<<<\n", 1));
 	if (c == 'N')
-		map->no_texture = convert_texture(line);
+		map->no_texture = ft_strdup(line);
 	else if (c == 'S')
-		map->so_texture = convert_texture(line);
+		map->so_texture = ft_strdup(line);
 	else if (c == 'E')
-		map->ea_texture = convert_texture(line);
+		map->ea_texture = ft_strdup(line);
 	else if (c == 'W')
-		map->we_texture = convert_texture(line);
+		map->we_texture = ft_strdup(line);
 	else if (c == 's')
-		map->sprite_texture = convert_texture(line);
+		map->sprite_texture = ft_strdup(line);
 	return (0);
 }
 
@@ -86,8 +90,6 @@ int		get_info(char *line, t_list *map)
 	skip_beginning(&line, map);
 	if (*line == '\n')
 		return (0);
-	else if ((*line == 'S' && line[1] == ' ') || line[1] == '.')
-		return (get_texture(line, map, 's'));
 	else if (*line == 'N' && line[1] == 'O')
 		return (get_texture(line, map, 'N'));
 	else if (*line == 'W' && line[1] == 'E')
@@ -96,6 +98,8 @@ int		get_info(char *line, t_list *map)
 		return (get_texture(line, map, 'E'));
 	else if (*line == 'S' && line[1] == 'O')
 		return (get_texture(line, map, 'S'));
+	else if ((*line == 'S' && line[1] != 'O')) // nog een nieuwe functie toevoegen
+		return (get_texture(line, map, 's'));
 	else if (*line == 'R')
 		return (get_resolution(line, map));
 	else if (*line == 'F')
