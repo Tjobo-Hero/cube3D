@@ -6,7 +6,7 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/02 19:51:19 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/22 12:03:17 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/23 15:07:24 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,109 @@ int		resolution_check(t_vars *t, t_list *map)
 	return (0);
 }
 
+void	initialize_ray_struct(t_vars *t)
+{
+	t->r->temp_x = 0.0;
+	t->r->temp_y = 0.0;
+	t->r->ray_dir = 0.0;
+	t->r->x_dir = 0.0;
+	t->r->y_dir = 0.0;
+	t->r->delta_x = 0.0;
+	t->r->delta_y = 0.0;
+	t->r->hit_x = 0.0;
+	t->r->hit_y = 0.0;
+	t->r->dist_x = 0.0;
+	t->r->dist_y = 0.0;
+	t->r->eucl_dist = 0.0;
+	t->r->perp_dist = 0.0;
+	t->r->pos_wall = 0.0;
+	t->r->dist = 0.0;
+	t->r->step_x = 0;
+	t->r->step_y = 0;
+	t->r->map_x = 0;
+	t->r->map_y = 0;
+	t->r->side = 0;
+}
+
+void	initialize_texture_no(t_vars *t)
+{
+	t->no->img_h = 0;
+	t->no->h1 = 0;
+	t->no->half_res_h = 0;
+	t->no->height_text = 0;
+	t->no->y_count = 0;
+	t->no->text_step = 0;
+	t->no->pix_height = 0;
+}
+
+void	initialize_texture_so(t_vars *t)
+{
+	t->so->img_h = 0;
+	t->so->h1 = 0;
+	t->so->half_res_h = 0;
+	t->so->height_text = 0;
+	t->so->y_count = 0;
+	t->so->text_step = 0;
+	t->so->pix_height = 0;
+}
+
+void	initialize_texture_ea(t_vars *t)
+{
+	t->ea->img_h = 0;
+	t->ea->h1 = 0;
+	t->ea->half_res_h = 0;
+	t->ea->height_text = 0;
+	t->ea->y_count = 0;
+	t->ea->text_step = 0;
+	t->ea->pix_height = 0;
+}
+
+void	initialize_texture_we(t_vars *t)
+{
+	t->we->img_h = 0;
+	t->we->h1 = 0;
+	t->we->half_res_h = 0;
+	t->we->height_text = 0;
+	t->we->y_count = 0;
+	t->we->text_step = 0;
+	t->we->pix_height = 0;
+}
+
+void	initialize_texture_sp(t_vars *t)
+{
+	t->sp->count = 0;
+	t->sp->height_text = 0;
+	t->sp->y_count = 0;
+	t->sp->img_h = 0;
+	t->sp->h_res_h = 0;
+	t->sp->h1 = 0;
+	t->sp->step = 0.0;
+	t->sp->sp_angle_l = 0.0;
+	t->sp->sp_angle_r = 0.0;
+	t->sp->pix_height = 0.0;
+	t->sp->ray_start = 0.0;
+	t->sp->sp_start = 0.0;
+	t->sp->text_step = 0.0;
+	t->sp->sp_step = 0.0;
+	t->sp->ray_step = 0.0;
+	t->sp->ray = 0.0;
+	t->sp->i = 0.0;
+}
+
+void	initialize_struct_details(t_vars *t)
+{
+	initialize_ray_struct(t);
+	initialize_texture_no(t);
+	initialize_texture_so(t);
+	initialize_texture_ea(t);
+	initialize_texture_we(t);
+	initialize_texture_sp(t);
+}
+
 int		initialize_data(t_vars *t, t_list *map)
 {
 	set_tile_width_and_height(t);
+	initialize_struct_details(t);
 	mlx_get_screen_size(t->mlx2, &t->screen_x, &t->screen_y);
 	if (!t->screen_x || !t->screen_y)
 		return (put_str(">>>MLX GET_SCREEN_SIZE Error<<<", 1));

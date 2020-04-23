@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/21 11:31:23 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/22 12:07:46 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/23 14:50:20 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,7 @@ int		move(t_vars *t)
 	return (1);
 }
 
-// void	initialize_game_struct(t_vars *t)
-// {
-// 	t_texture_no	no;
-// 	t_texture_so	so;
-// 	t_texture_we	we;
-// 	t_texture_ea	ea;
-// 	t_sprite		sp;
-
-// 	t->we = &we;
-// 	t->no = &no;
-// 	t->so = &so;
-// 	t->ea = &ea;
-// 	t->sp = &sp;
-// }
-
-void	maze(t_list *map, t_vars *t)
+void	initialize_game_struct(t_vars *t)
 {
 	t_texture_no	no;
 	t_texture_so	so;
@@ -90,7 +75,23 @@ void	maze(t_list *map, t_vars *t)
 	t->so = &so;
 	t->ea = &ea;
 	t->sp = &sp;
+}
 
+void	maze(t_list *map, t_vars *t)
+{
+	// t_texture_no	no;
+	// t_texture_so	so;
+	// t_texture_we	we;
+	// t_texture_ea	ea;
+	// t_sprite		sp;
+
+	// t->we = &we;
+	// t->no = &no;
+	// t->so = &so;
+	// t->ea = &ea;
+	// t->sp = &sp;
+
+	initialize_game_struct(t);
 	if (initialize_data(t, map))
 	{
 		write(1, ">>>INITIALIZE ERROR <<<\n", 25);

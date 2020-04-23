@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 14:54:53 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/17 14:15:28 by tim           ########   odam.nl         */
+/*   Updated: 2020/04/23 14:28:50 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,9 @@ int		get_color(char *line, t_list *map)
 int		get_info(char *line, t_list *map)
 {
 	skip_beginning(&line, map);
-	if ((*line == 'S' && line[1] == ' ') || line[1] == '.')
+	if (*line == '\n')
+		return (0);
+	else if ((*line == 'S' && line[1] == ' ') || line[1] == '.')
 		return (get_texture(line, map, 's'));
 	else if (*line == 'N' && line[1] == 'O')
 		return (get_texture(line, map, 'N'));

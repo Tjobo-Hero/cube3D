@@ -6,13 +6,13 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/12 11:55:21 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/22 11:10:18 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/23 14:58:53 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-void		check_x_and_y(t_vars *t, int x ,int y)
+void		check_x_and_y(t_vars *t, int x, int y)
 {
 	if (y < 0)
 		y = 0;

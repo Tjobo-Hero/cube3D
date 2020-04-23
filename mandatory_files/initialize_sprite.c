@@ -6,7 +6,7 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/23 11:02:35 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/22 11:57:54 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/23 14:39:19 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		initialize_sprites(t_vars *t)
 {
 	t->sp->mlx = mlx_init();
+	printf("SPRITE_TEX: %s\n", t->map->sprite_texture);
 	if (!mlx_xpm_file_to_image(t->sp->mlx, t->map->sprite_texture,
 	&t->sp->img_width, &t->sp->img_height))
 		return (put_str(">>>WRONG SPRITE PATH<<<\n", 1));

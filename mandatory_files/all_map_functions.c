@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/09 10:59:39 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/22 11:51:40 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/22 19:26:32 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ int		read_map(t_list *map, char **argv)
 		ret = get_next_line(fd, &line);
 		if (ret == -1)
 		{
-			write(1, "Read failed\n", 13);
-			return (1);
+			close(fd);
+			return (put_str(">>>READ FAILED<<<\n", 1));
 		}
 		if (get_map_info(line, map))
 			return (1);

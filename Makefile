@@ -6,7 +6,7 @@
 #    By: tvan-cit <tvan-cit@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/22 15:33:02 by tvan-cit      #+#    #+#                  #
-#    Updated: 2020/04/22 12:16:47 by vancitters    ########   odam.nl          #
+#    Updated: 2020/04/23 14:31:24 by vancitters    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC		= 	main.c get_next_line.c get_next_line_utils.c get_map_info.c \
 LIB	 	=	$(subst .c,.o, $(SRC))
 SRC2	=	$(addprefix mandatory_files/,$(SRC))
 
-CC = 		gcc -O3 -g -fsanitize=address -Wall -Werror -Wextra -std=gnu99 -I minilibx -L minilibx \
+CC = 		gcc -O3 -g -Wall -Werror -Wextra -std=gnu99 -I minilibx -L minilibx \
 			-lmlx -framework OpenGL -framework AppKit -o \
 
 all: $(NAME)
