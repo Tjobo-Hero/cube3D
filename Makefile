@@ -6,7 +6,7 @@
 #    By: tvan-cit <tvan-cit@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/22 15:33:02 by tvan-cit      #+#    #+#                  #
-#    Updated: 2020/04/23 16:56:55 by vancitters    ########   odam.nl          #
+#    Updated: 2020/04/25 08:38:55 by vancitters    ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC		= 	main.c get_next_line.c get_next_line_utils.c get_map_info.c \
 			initialize_sprite.c sprites.c draw_sprites.c initialize_data.c \
 			textures2.c export_bmp.c utils_initialize.c utils_map_info.c \
 			utils_map.c utils_ray.c utils_color_info.c utils_color_info2.c \
-			utils_resolution_info.c utils_sprite.c utils_player_move.c \
+			utils_resolution_info.c utils_sprite.c utils_player_move.c utils_initialize_struct_data.c \
 
 LIB	 	=	$(subst .c,.o, $(SRC))
 SRC2	=	$(addprefix mandatory_files/,$(SRC))

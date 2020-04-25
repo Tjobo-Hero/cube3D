@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 14:54:53 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/23 16:01:55 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/25 08:40:36 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int		get_info(char *line, t_list *map)
 		return (get_texture(line, map, 'E'));
 	else if (*line == 'S' && line[1] == 'O')
 		return (get_texture(line, map, 'S'));
-	else if ((*line == 'S' && line[1] != 'O')) // nog een nieuwe functie toevoegen
+	else if ((*line == 'S' && line[1] != 'O'))
 		return (get_texture(line, map, 's'));
 	else if (*line == 'R')
 		return (get_resolution(line, map));

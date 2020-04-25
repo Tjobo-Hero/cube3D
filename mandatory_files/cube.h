@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:58:03 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/23 19:53:31 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/25 08:41:37 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,19 +197,8 @@ typedef struct		s_sprite
 
 typedef	struct		s_vars
 {
-	// int				tile_width;
-	// int				tile_height;
 	float			x;
 	float			y;
-	// void			*img;
-	// char			*addr;
-	// int				bits_per_pixel;
-	// int				line_length;
-	// int				endian;
-	// void			*mlx;
-	// void			*win;
-	// int				img_widthr;
-	// int				img_height;
 	float			mid_ray;
 	float			mid_ray_x;
 	float			mid_ray_y;
@@ -250,6 +239,7 @@ char				*ft_strdup(const char *src);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 char				*ft_strchr(const char *s, int c);
 
+void				initialize_struct_details(t_vars *t);
 void				initialize_ray_struct(t_ray_data *r);
 void				clear_struct(t_list *map);
 
