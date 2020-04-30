@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 15:58:33 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 21:30:20 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/27 10:02:31 by tvan-cit      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int		check_if_valid_info(t_list *map)
 	!map->we_texture || !map->ea_texture
 	|| !map->sprite_texture)
 		return (put_str(">>>MISSING TEXTURE<<<\n", 1));
-	if (map->res_h < 20 || map->res_w < 20 || !map->res_h || !map->res_w)
-		return (put_str(">>>RESOLUTION ERROR, KEEP IT ABOVE 20<<<\n", 1));
+	if (map->res_h < 25 || map->res_w < 25 || !map->res_h || !map->res_w)
+		return (put_str(">>>RESOLUTION ERROR, KEEP IT >= 25<<<\n", 1));
 	if (check_rgb(map))
 		return (put_str(">>>WRONG RGB COLOR<<<\n", 1));
 	put_color_to_hex(map);

@@ -6,7 +6,7 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/18 11:58:57 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/23 15:15:30 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/27 10:09:48 by tvan-cit      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	texture_north(t_vars *t, t_ray_data *r)
 		t->no->pix_height = 0.999999;
 	t->no->pix_height = (t->no->pix_height * t->res3d_h) / 2.0;
 	t->no->y_count = 0;
+	if (t->no->height_text == 0)
+		t->no->height_text = 1;
 	t->no->text_step = ((t->no->img_height - 1.0) / 2.0) / t->no->height_text;
 	t->no->img_h = (t->no->img_height / 2);
 	t->no->h1 = (int)(r->pos_wall * t->no->img_width) *
 	(t->no->bits_per_pixel / 8);
 	t->no->half_res_h = (t->res3d_h / 2);
-	if (t->res3d_h % 2 != 0)
-		t->no->pix_height++;
 	while (t->no->y_count <= (int)t->no->pix_height)
 	{
 		my_mlx_pixel_put3d(t, t->x_count, t->no->half_res_h + t->no->y_count,
@@ -48,6 +48,8 @@ void	texture_south(t_vars *t, t_ray_data *r)
 		t->so->pix_height = 0.999999;
 	t->so->pix_height = (t->so->pix_height * t->res3d_h) / 2.0;
 	t->so->y_count = 0;
+	if (t->so->height_text == 0)
+		t->so->height_text = 1;
 	t->so->text_step = ((t->so->img_height - 1.0) / 2.0) / t->so->height_text;
 	t->so->img_h = (t->so->img_height / 2);
 	t->so->h1 = (int)(r->pos_wall * t->so->img_width) *
@@ -74,6 +76,8 @@ void	texture_east(t_vars *t, t_ray_data *r)
 		t->ea->pix_height = 0.999999;
 	t->ea->pix_height = (t->ea->pix_height * t->res3d_h) / 2.0;
 	t->ea->y_count = 0;
+	if (t->ea->height_text == 0)
+		t->ea->height_text = 1;
 	t->ea->text_step = ((t->ea->img_height - 1.0) / 2.0) / t->ea->height_text;
 	t->ea->img_h = (t->ea->img_height / 2);
 	t->ea->h1 = (int)(r->pos_wall * t->ea->img_width) *
@@ -100,6 +104,8 @@ void	texture_west(t_vars *t, t_ray_data *r)
 		t->we->pix_height = 0.999999;
 	t->we->pix_height = (t->we->pix_height * t->res3d_h) / 2.0;
 	t->we->y_count = 0;
+	if (t->we->height_text == 0)
+		t->we->height_text = 1;
 	t->we->text_step = ((t->we->img_height - 1.0) / 2.0) / t->we->height_text;
 	t->we->img_h = (t->we->img_height / 2);
 	t->we->h1 = (int)(r->pos_wall * t->we->img_width) *

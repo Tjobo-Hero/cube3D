@@ -6,7 +6,7 @@
 /*   By: vancitters <vancitters@student.codam.nl      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/25 08:36:51 by vancitters    #+#    #+#                 */
-/*   Updated: 2020/04/25 08:38:22 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/26 20:16:12 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	initialize_texture_we(t_vars *t)
 	initialize_texture_ea(t);
 }
 
-void	initialize_texture_sp(t_vars *t)
+void	initialize_struct_details(t_vars *t)
 {
 	t->sp->count = 0;
 	t->sp->height_text = 0;
@@ -79,9 +79,4 @@ void	initialize_texture_sp(t_vars *t)
 	t->sp->ray = 0.0;
 	t->sp->i = 0.0;
 	initialize_texture_we(t);
-}
-
-void	initialize_struct_details(t_vars *t)
-{
-	initialize_texture_sp(t);
 }

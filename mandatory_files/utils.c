@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/09 11:26:45 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/14 21:31:28 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/26 20:17:31 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,16 @@ int		leave_game(t_vars *t)
 	mlx_destroy_window(t->mlx2, t->win2);
 	exit_program(t);
 	return (0);
+}
+
+int		ft_strlen(const char *str)
+{
+	int len;
+
+	if (!str)
+		return (0);
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }

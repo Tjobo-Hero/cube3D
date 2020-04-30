@@ -6,25 +6,13 @@
 /*   By: tim <tim@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/18 13:28:17 by tim           #+#    #+#                 */
-/*   Updated: 2020/04/23 16:55:44 by vancitters    ########   odam.nl         */
+/*   Updated: 2020/04/26 20:20:02 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int		ft_strlen(const char *str)
-{
-	int len;
-
-	if (!str)
-		return (0);
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	return (len);
-}
-
-char	*ft_strdup(const char *src)
+char			*ft_strdup(const char *src)
 {
 	int			i;
 	char		*copy;

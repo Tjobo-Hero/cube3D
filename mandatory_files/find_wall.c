@@ -6,7 +6,7 @@
 /*   By: tvan-cit <tvan-cit@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 13:33:10 by tvan-cit      #+#    #+#                 */
-/*   Updated: 2020/04/21 13:47:22 by tim           ########   odam.nl         */
+/*   Updated: 2020/04/26 20:14:23 by vancitters    ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	find_dist(t_vars *t, t_ray_data *r)
 	}
 	r->hit_x = fabs(r->dist_x / sin(r->ray_dir));
 	r->hit_y = fabs(r->dist_y / cos(r->ray_dir));
-	//printf("count: %d -- x: %f -- y: %f \n", t->x_count, r->hit_x, r->hit_y);
 	r->delta_x = fabs(1.0 / sin(r->ray_dir));
 	r->delta_y = fabs(1.0 / cos(r->ray_dir));
 	find_step(t, r);

@@ -8,13 +8,13 @@ EA ./textures/wood.xpm
 WE ./textures/texture_west.xpm
 S ./textures/sprite_2.xpm
 
-R 1281 789
+R 106 107
 F 82,  24 , 79              
 C   52 ,   224, 255
 
-11
-121111
-12W21
+11111
+122111
+12E21
 122111111111
 121
 1221
